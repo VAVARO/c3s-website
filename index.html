@@ -169,10 +169,11 @@
 <div class="relative group">
 <div class="aspect-square bg-white rounded-2xl border border-outline-variant p-4 overflow-hidden rotate-2 group-hover:rotate-0 transition-transform duration-500 shadow-sm">
 <img class="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700" alt="Obra de arte estilo editorial de personas conversando" src="./material/wordcloud.png"/>
+<div class="absolute -bottom-6 -left-6 bg-secondary text-on-secondary p-6 md:p-8 rounded-xl hidden md:block max-w-[260px] shadow-lg border border-white/10">
+  <p class="font-headline-md font-semibold italic text-center leading-snug text-on-secondary">
+    "Sin Capital Social nada Florece"
+  </p>
 </div>
-<div class="absolute -bottom-6 -left-6 bg-secondary text-on-secondary p-8 rounded-xl hidden md:block max-w-[240px] shadow-lg">
-<p class="font-body-md italic">"Nos salvamos juntos o nos hundimos separados"</p>
-<p class="font-label-sm mt-4 font-bold">— Juan Rulfo</p>
 </div>
 </div>
 </div>
@@ -195,20 +196,26 @@
         </p>
 
         <!-- Tarjetas Misión y Visión -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
+        <div class="grid sm:grid-cols-2 gap-6 pt-4">
           
-          <!-- Card Misión -->
-          <div class="p-8 bg-background border border-outline-variant rounded-xl editorial-line">
-            <h3 class="font-headline-md text-headline-md text-secondary mb-4">Misión</h3>
-            <p class="font-body-md text-body-md text-tertiary">
+          <!-- Tarjeta Misión -->
+          <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/60">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-primary text-2xl">flag</span>
+            </div>
+            <h3 class="font-headline-md text-lg text-primary mb-3 font-semibold">Misión</h3>
+            <p class="font-body-md text-sm text-tertiary leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
 
-          <!-- Card Visión -->
-          <div class="p-8 bg-background border border-outline-variant rounded-xl editorial-line">
-            <h3 class="font-headline-md text-headline-md text-secondary mb-4">Visión</h3>
-            <p class="font-body-md text-body-md text-tertiary">
+          <!-- Tarjeta Visión -->
+          <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/60">
+            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-secondary text-2xl">visibility</span>
+            </div>
+            <h3 class="font-headline-md text-lg text-secondary mb-3 font-semibold">Visión</h3>
+            <p class="font-body-md text-sm text-tertiary leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
@@ -219,20 +226,18 @@
     </div>
   </div>
 </section>
-<!-- Sección ¿Cuáles son nuestras acciones? -->
-<section class="py-24 bg-background">
+<!-- Sección Acciones -->
+<section class="py-24 bg-surface-container-low">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-    
-    <!-- Encabezado de Sección -->
     <div class="text-center mb-16">
       <h2 class="font-headline-lg text-headline-lg text-primary mb-4">¿Cuáles son nuestras acciones?</h2>
-      <p class="font-body-md text-body-md text-secondary max-w-2xl mx-auto italic">
+      <p class="font-body-lg text-body-lg text-tertiary max-w-2xl mx-auto italic">
         "Sea cual sea el problema, la comunidad es la respuesta." — Margaret Wheatley
       </p>
     </div>
 
-    <!-- Grid de 3 Tarjetas de Acción -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+    <!-- 3 Action Pillars -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
       <!-- Card 1: Encuentros Experienciales -->
       <div class="bg-white p-8 md:p-10 border border-outline-variant rounded-2xl flex flex-col justify-between group hover:border-secondary transition-all">
@@ -245,8 +250,8 @@
         </div>
       </div>
 
-      <!-- Card 2: Alcance Híbrido e Internacional -->
-      <div class="bg-primary p-8 md:p-10 border border-primary rounded-2xl flex flex-col justify-between text-on-primary shadow-lg group hover:bg-primary-container transition-all">
+      <!-- Card 2: Alcance Híbrido e Internacional (Highlighted Card) -->
+      <div class="bg-primary p-8 md:p-10 border border-primary-container rounded-2xl flex flex-col justify-between group hover:scale-[1.02] transition-all shadow-md">
         <div>
           <span class="material-symbols-outlined text-on-primary text-4xl mb-4">public</span>
           <h3 class="font-headline-md text-headline-md text-on-primary mb-4">Alcance Híbrido e Internacional</h3>
@@ -275,17 +280,17 @@
 <section id="contacto" class="py-24 bg-background relative overflow-hidden">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="bg-secondary rounded-[2rem] p-12 md:p-24 text-center relative z-10">
-<h2 class="font-display-lg text-display-lg text-on-secondary mb-8">¿Quieres ser parte del cambio?</h2>
+<h2 class="font-display-lg text-display-lg text-on-secondary mb-8">Lorem ipsum dolor sit amet?</h2>
 <p class="font-body-lg text-body-lg text-on-secondary/80 max-w-2xl mx-auto mb-12">
-                        Únete a nuestra red de organizaciones y líderes para seguir construyendo el capital social que Chile necesita.
-                    </p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</p>
 <div class="flex flex-col sm:flex-row justify-center gap-4">
 <a href="#contacto" class="bg-on-secondary text-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-secondary-fixed transition-colors inline-block">
-                            Suscribirse al Boletín
-                        </a>
+    Suscribirse al Mailing List
+</a>
 <a href="#contacto" class="border-2 border-on-secondary text-on-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-on-secondary hover:text-secondary transition-all inline-block">
-                            Contáctanos
-                        </a>
+    Contáctanos
+</a>
 </div>
 </div>
 <!-- Decorative elements -->
@@ -295,31 +300,33 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-surface-container-highest border-t border-outline-variant">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<div class="space-y-6">
+<footer class="bg-surface-container border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto items-start">
+<div class="space-y-4">
 <span class="font-headline-md text-headline-md text-primary font-bold">C3S</span>
-<p class="font-body-md text-secondary-fixed-dim max-w-xs">
-                    Círculo Chileno de Capital Social. Fomentando la colaboración y la confianza para el desarrollo nacional.
-                </p>
+<p class="font-body-md text-on-surface-variant max-w-xs leading-relaxed">
+    Círculo Chileno de Capital Social. Fomentando la colaboración y la confianza para el desarrollo nacional.
+</p>
 </div>
-<div class="flex flex-col gap-4">
-<h4 class="font-label-md text-primary font-bold uppercase tracking-widest mb-2">Enlaces</h4>
-<a class="font-body-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="que-es-capital-social.html">¿Qué es Capital Social?</a>
-<a class="font-body-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="resultados.html">Resultados e Impacto</a>
-<a class="font-body-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="encuentros.html">Próximos Encuentros</a>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-md text-primary font-bold uppercase tracking-widest mb-2">Comunidad</h4>
+<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="index.html">Inicio</a>
+<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="que-es-capital-social.html">¿Qué es Capital Social?</a>
+<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="quienes-somos.html">¿Quiénes somos?</a>
+<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="encuentros.html">Encuentros</a>
+<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="index.html#contacto">Contacto</a>
 </div>
-<div class="flex flex-col gap-4">
-<h4 class="font-label-md text-primary font-bold uppercase tracking-widest mb-2">Legal</h4>
-<a class="font-body-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Privacidad</a>
-<a class="font-body-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Términos y Condiciones</a>
-<a class="font-body-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Transparencia</a>
+<div class="space-y-6">
+<span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contacto</span>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="index.html#contacto">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</a>
 </div>
+<p class="text-label-sm text-on-surface-variant/70 italic">
+    © 2026 Círculo Chileno de Capital Social (C3S). Todos los derechos reservados.
+</p>
 </div>
-<div class="border-t border-outline-variant/30 py-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
-<p class="font-label-sm text-on-tertiary-fixed-variant">
-                © 2024 Círculo Chileno de Capital Social (C3S). Todos los derechos reservados.
-            </p>
 </div>
 </footer>
 <script>
