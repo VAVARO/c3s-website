@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Encuentros - C3S</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "on-primary-fixed": "#410000",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#303030",
+              "on-primary": "#ffffff",
+              "secondary": "#305ea2",
+              "surface-tint": "#ba1b11",
+              "outline-variant": "#e4beb8",
+              "background": "#fcf9f8",
+              "tertiary-fixed-dim": "#cdc6b8",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#4b463c",
+              "surface-dim": "#dcd9d9",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed": "#1f1b13",
+              "outline": "#906f6a",
+              "tertiary": "#3c372e",
+              "surface-container": "#f0eded",
+              "surface-container-highest": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "secondary-container": "#8ab4fe",
+              "tertiary-container": "#534e44",
+              "on-secondary-fixed-variant": "#0e4689",
+              "on-primary-fixed-variant": "#930000",
+              "on-background": "#1b1c1c",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary": "#ffffff",
+              "primary-container": "#a20101",
+              "inverse-on-surface": "#f3f0f0",
+              "surface-container-low": "#f6f3f2",
+              "primary-fixed": "#ffdad4",
+              "primary": "#770000",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#d6e3ff",
+              "surface-variant": "#e4e2e1",
+              "surface": "#fcf9f8",
+              "secondary-fixed-dim": "#aac7ff",
+              "on-secondary-fixed": "#001b3e",
+              "error": "#ba1a1a",
+              "on-tertiary-container": "#c7bfb2",
+              "primary-fixed-dim": "#ffb4a8",
+              "inverse-primary": "#ffb4a8",
+              "tertiary-fixed": "#eae1d4",
+              "surface-bright": "#fcf9f8",
+              "on-secondary-container": "#0a4487",
+              "on-surface": "#1b1c1c",
+              "on-surface-variant": "#5b403c",
+              "on-primary-container": "#ffab9e"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.125rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "full": "0.75rem"
+            },
+            "spacing": {
+              "gutter": "24px",
+              "container-max": "1200px",
+              "margin-desktop": "64px",
+              "margin-mobile": "16px",
+              "unit": "4px"
+            },
+            "fontFamily": {
+              "display-lg": ["Be Vietnam Pro"],
+              "body-md": ["Work Sans"],
+              "body-lg": ["Work Sans"],
+              "label-sm": ["Work Sans"],
+              "headline-lg-mobile": ["Be Vietnam Pro"],
+              "label-md": ["Work Sans"],
+              "headline-md": ["Be Vietnam Pro"],
+              "headline-lg": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+              "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+              "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+              "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+              "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+              "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+              "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+              "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+              "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fcf9f8;
+            font-family: 'Work Sans', sans-serif;
+            color: #1b1c1c;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-line {
+            height: 4px;
+            width: 80px;
+            background-color: #770000;
+        }
+        @keyframes drawLine {
+            from { stroke-dashoffset: 700; }
+            to { stroke-dashoffset: 0; }
+        }
+        .animated-line {
+            stroke-dasharray: 700;
+            stroke-dashoffset: 700;
+            animation: drawLine 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="bg-background border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary">C3S</a>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="index.html">Inicio</a>
+<a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="que-es-capital-social.html">¿Qué es Capital Social?</a>
+<a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos.html">¿Quiénes somos?</a>
+<a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="encuentros.html">Encuentros</a>
+<a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="index.html#contacto">Contacto</a>
+<a href="index.html#contacto" class="ml-4 bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md scale-95 active:scale-90 transition-transform duration-200 inline-block">
+    Unirse
+</a>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+<!-- Header Section -->
+<header class="mb-20">
+<div class="editorial-line mb-6"></div>
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Encuentros</h1>
+<p class="font-body-lg text-body-lg max-w-3xl text-on-surface-variant leading-relaxed">
+    Un registro del camino recorrido y el impacto generado a través de nuestros ciclos de diálogo e innovación colaborativa en Chile.
+</p>
+</header>
+
+<!-- SECTION 1: Encuentros Realizados (Chronological Order) -->
+<section class="mb-24">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="font-headline-lg text-headline-lg text-primary">Encuentros Realizados</h2>
+<div class="flex-grow h-px bg-outline-variant"></div>
+</div>
+
+<div class="space-y-8">
+<!-- 1. International Social Capital Association -->
+<div class="bg-white border border-outline-variant p-8 md:p-10 rounded-xl flex flex-col md:flex-row gap-8 items-center hover:border-primary transition-colors duration-300">
+<a href="https://intsocialcapital.org" target="_blank" rel="noopener noreferrer" class="w-full md:w-48 shrink-0 flex items-center justify-center p-4 bg-surface-container-low rounded-lg hover:opacity-90 transition-opacity">
+<img class="max-h-24 object-contain" alt="Logo de ISCA" src="./logos/ISCA.jpg"/>
+</a>
+<div class="flex-1 space-y-3">
+<h3 class="font-headline-lg text-headline-lg text-primary">
+<a href="https://intsocialcapital.org" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors underline-offset-4 hover:underline flex items-center gap-2">
+    <span>International Social Capital Association</span>
+    <span class="material-symbols-outlined text-xl opacity-70">open_in_new</span>
+</a>
+</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+    El primer Encuentro del C3S se realizó en el marco del Periplo por el Capital Social, una iniciativa impulsada por el Programa de Innovación y Sociotecnología junto al Presidente de la International Social Capital Association, Tristan Claridge, quien estuvo a cargo de la presentación inaugural del Círculo junto a destacados constructores de comunidades en Chile.
+</p>
+</div>
+</div>
+
+<!-- 2. Fundación para la Innovación Participativa -->
+<div class="bg-white border border-outline-variant p-8 md:p-10 rounded-xl flex flex-col md:flex-row gap-8 items-center hover:border-primary transition-colors duration-300">
+<a href="http://www.innovacion-participativa.org" target="_blank" rel="noopener noreferrer" class="w-full md:w-48 shrink-0 flex items-center justify-center p-4 bg-surface-container-low rounded-lg hover:opacity-90 transition-opacity">
+<img class="max-h-24 object-contain" alt="Logo de FIP" src="./logos/fip.png"/>
+</a>
+<div class="flex-1 space-y-3">
+<h3 class="font-headline-lg text-headline-lg text-primary">
+<a href="http://www.innovacion-participativa.org" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors underline-offset-4 hover:underline flex items-center gap-2">
+    <span>Fundación para la Innovación Participativa</span>
+    <span class="material-symbols-outlined text-xl opacity-70">open_in_new</span>
+</a>
+</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+    El ciclo de encuentros continuó en noviembre de 2025 con la realización del segundo encuentro, titulado "Praxis de la Innovación Participativa: Cómo hacer gobernables los desafíos de alta complejidad". En esta sesión, su director Alfredo del Valle expuso su metodología desarrollada durante más de 40 años, centrada en herramientas de planificación para abordar problemas sociales complejos.
+</p>
+</div>
+</div>
+
+<!-- 3. Consensus Building Institute (CBI) -->
+<div class="bg-white border border-outline-variant p-8 md:p-10 rounded-xl flex flex-col md:flex-row gap-8 items-center hover:border-primary transition-colors duration-300">
+<a href="https://www.cbi.org" target="_blank" rel="noopener noreferrer" class="w-full md:w-48 shrink-0 flex items-center justify-center p-4 bg-surface-container-low rounded-lg hover:opacity-90 transition-opacity">
+<img class="max-h-24 object-contain" alt="Logo de CBI" src="./logos/cbi.png"/>
+</a>
+<div class="flex-1 space-y-3">
+<h3 class="font-headline-lg text-headline-lg text-primary">
+<a href="https://www.cbi.org" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors underline-offset-4 hover:underline flex items-center gap-2">
+    <span>Consensus Building Institute (CBI)</span>
+    <span class="material-symbols-outlined text-xl opacity-70">open_in_new</span>
+</a>
+</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+    La continuidad del Círculo se fortaleció en marzo de 2026 con el tercer encuentro, el cual contó con la presentación del Consensus Building Institute (CBI). Bajo el liderazgo de Betsy Fierman, Melanie Gárate y David Plumb, la charla se centró en el enfoque de "Ganancias Mutuas" (Mutual Gains Approach) y la resolución de conflictos socioambientales en Latinoamérica.
+</p>
+</div>
+</div>
+
+<!-- 4. Presencing Institute -->
+<div class="bg-white border border-outline-variant p-8 md:p-10 rounded-xl flex flex-col md:flex-row gap-8 items-center hover:border-primary transition-colors duration-300">
+<a href="https://www.presencing.org" target="_blank" rel="noopener noreferrer" class="w-full md:w-48 shrink-0 flex items-center justify-center p-4 bg-surface-container-low rounded-lg hover:opacity-90 transition-opacity">
+<img class="max-h-24 object-contain" alt="Logo del Presencing Institute" src="./logos/presencing.png"/>
+</a>
+<div class="flex-1 space-y-3">
+<h3 class="font-headline-lg text-headline-lg text-primary">
+<a href="https://www.presencing.org" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors underline-offset-4 hover:underline flex items-center gap-2">
+    <span>Presencing Institute</span>
+    <span class="material-symbols-outlined text-xl opacity-70">open_in_new</span>
+</a>
+</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+    Posteriormente, en abril, se llevó a cabo el cuarto encuentro, protagonizado por el Presencing Institute bajo el título "Transformación social y el futuro emergente: el camino hacia un liderazgo ecosistémico". Katrin Kaufer y Sebastián Jung guiaron a la audiencia en una exploración de la Teoría U, enfatizando la necesidad de conectar con el "campo social" y los propósitos invisibles para generar impacto.
+</p>
+</div>
+</div>
+
+<!-- 5. Balloon Latam -->
+<div class="bg-white border border-outline-variant p-8 md:p-10 rounded-xl flex flex-col md:flex-row gap-8 items-center hover:border-primary transition-colors duration-300">
+<a href="https://balloonlatam.com" target="_blank" rel="noopener noreferrer" class="w-full md:w-48 shrink-0 flex items-center justify-center p-4 bg-surface-container-low rounded-lg hover:opacity-90 transition-opacity">
+<img class="max-h-20 object-contain" alt="Logo de Balloon Latam" src="./logos/balloonlatam.png"/>
+</a>
+<div class="flex-1 space-y-3">
+<h3 class="font-headline-lg text-headline-lg text-primary">
+<a href="https://balloonlatam.com" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors underline-offset-4 hover:underline flex items-center gap-2">
+    <span>Balloon Latam</span>
+    <span class="material-symbols-outlined text-xl opacity-70">open_in_new</span>
+</a>
+</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+    En mayo, el quinto encuentro puso el foco en la vinculación territorial con la presentación "Cuando las relaciones sociales cambian: el caso de Balloon Latam". Sebastián Salinas, Juan Ignacio Cordero, Martín Salas y Pamela Barroso detallaron cómo su modelo de empresa social ha logrado fortalecer la cohesión en comunidades rurales de Chile a través del emprendimiento y la innovación.
+</p>
+</div>
+</div>
+
+<!-- 6. Programa de Innovación y Sociotecnología (PISCT) -->
+<div class="bg-white border border-outline-variant p-8 md:p-10 rounded-xl flex flex-col md:flex-row gap-8 items-center hover:border-primary transition-colors duration-300">
+<a href="http://www.carlosvignolo.com" target="_blank" rel="noopener noreferrer" class="w-full md:w-48 shrink-0 flex items-center justify-center p-4 bg-surface-container-low rounded-lg hover:opacity-90 transition-opacity">
+<img class="max-h-24 object-contain" alt="Logo del PISCT Universidad de Chile" src="./logos/PISCT.png"/>
+</a>
+<div class="flex-1 space-y-3">
+<h3 class="font-headline-lg text-headline-lg text-primary">
+<a href="http://www.carlosvignolo.com" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors underline-offset-4 hover:underline flex items-center gap-2">
+    <span>Programa de Innovación y Sociotecnología (PISCT)</span>
+    <span class="material-symbols-outlined text-xl opacity-70">open_in_new</span>
+</a>
+</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+    En junio concluyó el 1er Ciclo de Encuentros C3S con la presentación "Biología del conocer, Conversar y Amar: Una opción para construir Capital Social", dictada por el profesor Carlos Vignolo, director del Programa de Innovación y Sociotecnología (PISCT). En esta jornada de cierre, se profundizó en la intersección de la plataforma filosófica constructivista radical, los avances de la neurociencia y la ingeniería de sistemas como pilares fundamentales para la construcción de Capital Social.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: Resultados e Impacto (Native HTML/SVG Code-built Data Visualizations) -->
+<section id="resultados" class="mb-24 bg-surface-container-low p-8 md:p-12 border border-outline-variant rounded-2xl">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="font-headline-lg text-headline-lg text-primary">Resultados e Impacto</h2>
+<div class="flex-grow h-px bg-outline-variant"></div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-12">
+<!-- Native Chart 1: Evaluación de Jornadas (Rescaled SVG Line/Point Chart) -->
+<div class="bg-white p-6 md:p-8 border border-outline-variant rounded-xl flex flex-col justify-between h-full shadow-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Evaluación de Jornadas</h3>
+<h4 class="font-headline-md text-xl md:text-2xl text-secondary font-semibold mb-2">Percepción del Beneficio Obtenido por los Asistentes</h4>
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant leading-relaxed mb-6">
+    Evolución de la nota promedio asignada por jornada (Escala de 1.0 a 7.0)
+</p>
+</div>
+
+<!-- INNER CHART WRAPPER: VERTICALLY EXPANDED FLEX ITEM -->
+<div class="w-full flex-1 min-h-[350px] md:min-h-[400px] flex items-center justify-center p-4 bg-surface-container-low rounded-lg border border-outline-variant/60 relative">
+<svg class="w-full h-full overflow-visible" viewBox="0 0 500 320">
+<defs>
+<linearGradient id="lineGrad" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#770000"></stop>
+<stop offset="100%" stop-color="#a20101"></stop>
+</linearGradient>
+<linearGradient id="areaGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#770000" stop-opacity="0.18"></stop>
+<stop offset="100%" stop-color="#770000" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+
+<!-- Horizontal Gridlines & Y-Axis Markers (5.0, 6.0, 7.0 with 5.5, 6.5) -->
+<line stroke="#e4beb8" stroke-dasharray="4 4" stroke-opacity="0.6" x1="50" x2="480" y1="40" y2="40"></line>
+<text class="text-sm font-semibold fill-outline" text-anchor="end" x="42" y="44">7.0</text>
+
+<line stroke="#e4beb8" stroke-dasharray="4 4" stroke-opacity="0.6" x1="50" x2="480" y1="115" y2="115"></line>
+<text class="text-sm font-semibold fill-outline" text-anchor="end" x="42" y="119">6.5</text>
+
+<line stroke="#e4beb8" stroke-dasharray="4 4" stroke-opacity="0.6" x1="50" x2="480" y1="190" y2="190"></line>
+<text class="text-sm font-semibold fill-outline" text-anchor="end" x="42" y="194">6.0</text>
+
+<line stroke="#e4beb8" stroke-dasharray="4 4" stroke-opacity="0.6" x1="50" x2="480" y1="240" y2="240"></line>
+<text class="text-sm font-semibold fill-outline" text-anchor="end" x="42" y="244">5.5</text>
+
+<line stroke="#906f6a" stroke-width="1.5" x1="50" x2="480" y1="270" y2="270"></line>
+<text class="text-sm font-semibold fill-outline" text-anchor="end" x="42" y="274">5.0</text>
+
+<!-- Y-Axis Title (Rotated) -->
+<text class="text-xs font-bold fill-secondary uppercase tracking-wider" transform="rotate(-90)" x="-155" y="16">Nota</text>
+
+<!-- Area Fill Under Line -->
+<path d="M 60 115 L 160 115 L 260 145 L 360 160 L 460 85 L 460 270 L 60 270 Z" fill="url(#areaGrad)"></path>
+
+<!-- Smooth Animated Line Path -->
+<path class="animated-line" d="M 60 115 L 160 115 L 260 145 L 360 160 L 460 85" fill="none" stroke="url(#lineGrad)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+
+<!-- Data Nodes & Score Badges -->
+<!-- 2do: 6.5 (x=60, y=115) -->
+<g class="group/node cursor-pointer">
+<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="60" cy="115" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="40" y="82"></rect>
+<text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="60" y="97">6.5</text>
+<text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="60" y="292">2do</text>
+</g>
+
+<!-- 3er: 6.5 (x=160, y=115) -->
+<g class="group/node cursor-pointer">
+<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="160" cy="115" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="140" y="82"></rect>
+<text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="160" y="97">6.5</text>
+<text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="160" y="292">3er</text>
+</g>
+
+<!-- 4to: 6.3 (x=260, y=145) -->
+<g class="group/node cursor-pointer">
+<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="260" cy="145" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="240" y="112"></rect>
+<text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="260" y="127">6.3</text>
+<text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="260" y="292">4to</text>
+</g>
+
+<!-- 5to: 6.2 (x=360, y=160) -->
+<g class="group/node cursor-pointer">
+<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="360" cy="160" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="340" y="127"></rect>
+<text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="360" y="142">6.2</text>
+<text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="360" y="292">5to</text>
+</g>
+
+<!-- 6to: 6.7 (x=460, y=85) -->
+<g class="group/node cursor-pointer">
+<circle class="transition-all duration-300 transform group-hover/node:r-9 group-hover/node:fill-secondary" cx="460" cy="85" fill="#a20101" r="7" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="group-hover/node:fill-secondary transition-colors" fill="#a20101" height="22" rx="4" width="40" x="440" y="52"></rect>
+<text class="text-xs font-extrabold" fill="#ffffff" text-anchor="middle" x="460" y="67">6.7</text>
+<text class="text-sm font-bold fill-primary" text-anchor="middle" x="460" y="292">6to</text>
+</g>
+
+<!-- X-Axis Title -->
+<text class="text-xs font-bold fill-secondary uppercase tracking-wider" text-anchor="middle" x="260" y="314">Número del Encuentro del C3S</text>
+</svg>
+</div>
+</div>
+
+<!-- Native Chart 2: Síntesis de Estados de Ánimo (Enhanced Typography & Hover Animations) -->
+<div class="bg-white p-8 border border-outline-variant rounded-xl flex flex-col justify-between h-full space-y-6 shadow-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Clima Emocional y Disposición Anímica</h3>
+<h4 class="font-headline-md text-xl md:text-2xl text-secondary font-semibold mb-2">Síntesis de Estados de Ánimo Post-Encuentros C3S</h4>
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant leading-relaxed mb-6">
+    Porcentaje de menciones para el Top 10 de estados de ánimo registrados al finalizar los Encuentros
+</p>
+</div>
+
+<!-- NATIVE HTML PROGRESS BARS WITH HOVER INTERACTIVITY -->
+<div class="space-y-3.5 my-auto">
+<!-- 1. Entusiasmo: 16.30% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">1. Entusiasmo</span>
+<span class="font-bold text-primary">16.30%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+
+<!-- 2. Interés: 14.40% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">2. Interés</span>
+<span class="font-bold text-primary">14.40%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary rounded-full opacity-90" style="width: 88.3%"></div>
+</div>
+</div>
+
+<!-- 3. Agradecimiento: 13.60% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">3. Agradecimiento</span>
+<span class="font-bold text-primary">13.60%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary rounded-full opacity-85" style="width: 83.4%"></div>
+</div>
+</div>
+
+<!-- 4. Esperanza: 9.90% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">4. Esperanza</span>
+<span class="font-bold text-primary">9.90%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary-container rounded-full opacity-80" style="width: 60.7%"></div>
+</div>
+</div>
+
+<!-- 5. Confianza: 6.70% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">5. Confianza</span>
+<span class="font-bold text-primary">6.70%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary-container rounded-full opacity-75" style="width: 41.1%"></div>
+</div>
+</div>
+
+<!-- 6. Expectación: 5.90% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">6. Expectación</span>
+<span class="font-bold text-primary">5.90%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary-container rounded-full opacity-70" style="width: 36.2%"></div>
+</div>
+</div>
+
+<!-- 7. Optimismo: 5.30% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">7. Optimismo</span>
+<span class="font-bold text-primary">5.30%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary-container rounded-full opacity-65" style="width: 32.5%"></div>
+</div>
+</div>
+
+<!-- 8. Ambición: 4.50% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">8. Ambición</span>
+<span class="font-bold text-primary">4.50%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary-container rounded-full opacity-60" style="width: 27.6%"></div>
+</div>
+</div>
+
+<!-- 9. Aceptación: 4.30% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">9. Aceptación</span>
+<span class="font-bold text-primary">4.30%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary-container rounded-full opacity-55" style="width: 26.3%"></div>
+</div>
+</div>
+
+<!-- 10. Satisfacción: 4.00% -->
+<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="flex justify-between text-sm md:text-base font-medium">
+<span class="text-on-surface font-semibold">10. Satisfacción</span>
+<span class="font-bold text-primary">4.00%</span>
+</div>
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
+<div class="h-full bg-primary-container rounded-full opacity-50" style="width: 24.5%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Nube de Conceptos Clave -->
+<div class="bg-white p-8 md:p-10 border border-outline-variant rounded-xl space-y-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Nube de Conceptos Clave</h3>
+<p class="font-body-md text-on-surface-variant">
+    Basada en las respuestas a la pregunta: <em class="italic">"En una frase, ¿cuál es tu balance de esta presentación?"</em>
+</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant flex justify-center">
+<img class="max-h-[420px] w-auto object-contain rounded" alt="Nube de Palabras C3S" src="./material/wordcloud.png"/>
+</div>
+</div>
+</section>
+
+<!-- Call to Action Banner (Corrected Capitalization & Label) -->
+<section class="bg-primary text-on-primary p-10 md:p-16 rounded-2xl text-center relative overflow-hidden">
+<div class="relative z-10 space-y-6 max-w-3xl mx-auto">
+<h2 class="font-display-lg text-display-lg text-on-primary">¿Quieres ser parte del próximo Ciclo?</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container leading-relaxed">
+    Súmate a nuestra red de colaboración y recibe invitaciones exclusivas para los próximos conversatorios y talleres de capital social.
+</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+<a href="index.html#contacto" class="bg-white text-primary px-8 py-4 rounded-lg font-bold text-base hover:bg-secondary hover:text-white transition-colors inline-block">
+    Unirse a la Base de Datos
+</a>
+<a href="#" onclick="alert('Iniciando descarga del reporte consolidado de resultados C3S...'); return false;" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-white hover:text-primary transition-colors inline-block">
+    Descargar Reporte Completo
+</a>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-12 px-margin-desktop max-w-container-max mx-auto items-start">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md text-primary font-extrabold uppercase tracking-tighter">C3S</div>
+<p class="text-on-surface-variant font-body-md pr-8">
+    Círculo Chileno de Capital Social. Construyendo redes de valor humano para un futuro colectivo.
+</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-3">
+<span class="text-label-md font-bold text-primary mb-2">Institución</span>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Privacidad</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Términos</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Transparencia</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-md font-bold text-primary mb-2">Comunidad</span>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="index.html#contacto">Suscripción</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="encuentros.html">Encuentros</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="encuentros.html#resultados">Resultados</a>
+</div>
+</div>
+<div class="space-y-6">
+<span class="text-label-md font-bold text-primary block">Síguenos</span>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="index.html#contacto">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</a>
+</div>
+<p class="text-label-sm text-on-surface-variant/70 italic">
+    © 2024 Círculo Chileno de Capital Social (C3S). Todos los derechos reservados.
+</p>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,10 @@
+# Excluir la aplicación react/vite alternativa
+c3s-app/
+
+# Excluir capturas de pantalla y borradores temporales
+screen*.png
+Report*.pdf
+code_*.html
+codep*.html
+DESIGN*.md
+DESING*.md
