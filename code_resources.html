@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recursos y Publicaciones | C3S</title>
+<!-- Google Fonts: Be Vietnam Pro for Headings, Work Sans for Body -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Work+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#1f1b13",
+                    "secondary-container": "#8ab4fe",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e4e2e1",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fcf9f8",
+                    "on-tertiary-container": "#c7bfb2",
+                    "tertiary-fixed-dim": "#cdc6b8",
+                    "secondary-fixed-dim": "#aac7ff",
+                    "outline-variant": "#e4beb8",
+                    "on-secondary-container": "#0a4487",
+                    "on-background": "#1b1c1c",
+                    "tertiary": "#3c372e",
+                    "on-secondary-fixed-variant": "#0e4689",
+                    "on-secondary-fixed": "#001b3e",
+                    "inverse-on-surface": "#f3f0f0",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "background": "#fcf9f8",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#410000",
+                    "on-primary-fixed-variant": "#930000",
+                    "tertiary-container": "#534e44",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "on-surface-variant": "#5b403c",
+                    "secondary-fixed": "#d6e3ff",
+                    "primary-fixed": "#ffdad4",
+                    "inverse-surface": "#303030",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#ffb4a8",
+                    "tertiary-fixed": "#eae1d4",
+                    "surface-container-high": "#eae7e7",
+                    "surface-variant": "#e4e2e1",
+                    "on-surface": "#1b1c1c",
+                    "secondary": "#305ea2",
+                    "on-tertiary-fixed-variant": "#4b463c",
+                    "outline": "#906f6a",
+                    "on-primary-container": "#ffab9e",
+                    "on-error": "#ffffff",
+                    "primary-container": "#a20101",
+                    "surface-tint": "#ba1b11",
+                    "primary": "#770000",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#f0eded"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Be Vietnam Pro"],
+                    "headline-lg": ["Be Vietnam Pro"],
+                    "body-lg": ["Work Sans"],
+                    "body-md": ["Work Sans"],
+                    "label-sm": ["Work Sans"],
+                    "headline-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Be Vietnam Pro"],
+                    "label-md": ["Work Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #fcf9f8; /* Cream base from design system */
+        }
+        .resource-card {
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-4px);
+            border-color: #305ea2;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">C3S</div>
+<nav class="hidden md:flex items-center gap-8 font-body-md text-label-md">
+<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="index.html">Inicio</a>
+<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="que-es-capital-social.html">¿Qué es Capital Social?</a>
+<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="quienes-somos.html">¿Quiénes somos?</a>
+<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="encuentros.html">Encuentros</a>
+<!-- Active Link: Recursos -->
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1" href="code_resources.html">Recursos</a>
+<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="index.html#contacto">Contacto</a>
+</nav>
+<a href="index.html#contacto" class="bg-primary-container text-on-primary font-bold px-6 py-2 rounded transition-transform scale-95 active:scale-90 duration-200 inline-block">
+                Unirse
+</a>
+</div>
+</header>
+<main class="pt-32 pb-24">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop mb-16">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7">
+<span class="text-secondary font-semibold uppercase tracking-widest text-label-sm mb-4 block">Centro de Conocimiento</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Recursos y Publicaciones</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        El Círculo Chileno de Capital Social (C3S) se dedica a la recopilación y difusión de investigaciones que fortalecen el tejido social. Creemos que el conocimiento compartido es el pilar fundamental para la innovación institucional y la cohesión comunitaria en Chile.
+                    </p>
+</div>
+<div class="hidden md:block md:col-span-5 relative h-64">
+
+</div>
+</div>
+</section>
+<!-- Filter & Search Bar -->
+<section class="bg-surface-container-low py-8 mb-12 sticky top-20 z-40 border-y border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 bg-secondary text-white rounded-full text-label-md">Todos</button>
+<button class="px-4 py-2 border border-outline text-secondary hover:bg-secondary-fixed transition-colors rounded-full text-label-md">Investigaciones</button>
+<button class="px-4 py-2 border border-outline text-secondary hover:bg-secondary-fixed transition-colors rounded-full text-label-md">Reportes Anuales</button>
+<button class="px-4 py-2 border border-outline text-secondary hover:bg-secondary-fixed transition-colors rounded-full text-label-md">Guías Prácticas</button>
+</div>
+<div class="relative w-full md:w-80">
+<input class="w-full bg-white border border-outline-variant px-10 py-2 rounded focus:ring-2 focus:ring-secondary focus:outline-none" placeholder="Buscar recursos..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+</div>
+</section>
+<!-- Resources Grid -->
+<section class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Resource Card 1 -->
+<div class="resource-card bg-white border border-[#E5E5E5] p-8 flex flex-col h-full rounded">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded text-label-sm">Investigación</span>
+<span class="material-symbols-outlined text-outline">description</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Evolución del Capital Social en la Región Metropolitana</h3>
+<p class="text-label-md text-on-tertiary-fixed-variant mb-4">Dr. Roberto Valenzuela, CEPAL 2023</p>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">
+                        Análisis exhaustivo sobre las redes de confianza y cooperación ciudadana post-pandemia, identificando nuevos nodos de interacción comunitaria en Santiago.
+                    </p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<span class="text-label-sm text-outline">PDF • 4.2 MB</span>
+<a href="Report Ejecutivo C3S (2).pdf" target="_blank" class="flex items-center gap-2 text-secondary font-bold hover:underline underline-offset-4">
+                            Ver PDF
+                            <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Resource Card 2 -->
+<div class="resource-card bg-white border border-[#E5E5E5] p-8 flex flex-col h-full rounded">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded text-label-sm">Reporte Anual</span>
+<span class="material-symbols-outlined text-outline">analytics</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Informe de Impacto Social Chile 2022</h3>
+<p class="text-label-md text-on-tertiary-fixed-variant mb-4">Observatorio C3S</p>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">
+                        Compendio de métricas y resultados de las iniciativas de capital social implementadas a nivel nacional durante el periodo contable 2022.
+                    </p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<span class="text-label-sm text-outline">PDF • 8.5 MB</span>
+<a href="Report Ejecutivo C3S (2).pdf" download="Report Ejecutivo C3S (2).pdf" class="flex items-center gap-2 text-secondary font-bold hover:underline underline-offset-4">
+                            Descargar
+                            <span class="material-symbols-outlined text-[18px]">download</span>
+</a>
+</div>
+</div>
+<!-- Resource Card 3 -->
+<div class="resource-card bg-white border border-[#E5E5E5] p-8 flex flex-col h-full rounded">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded text-label-sm">Guía Práctica</span>
+<span class="material-symbols-outlined text-outline">menu_book</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Metodologías de Co-creación Comunitaria</h3>
+<p class="text-label-md text-on-tertiary-fixed-variant mb-4">Unidad de Innovación C3S</p>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">
+                        Manual paso a paso para líderes sociales sobre cómo facilitar encuentros efectivos y dinámicas de grupo que fomenten el capital social.
+                    </p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<span class="text-label-sm text-outline">PDF • 2.1 MB</span>
+<button class="flex items-center gap-2 text-secondary font-bold hover:underline underline-offset-4">
+                            Ver PDF
+                            <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Resource Card 4 -->
+<div class="resource-card bg-white border border-[#E5E5E5] p-8 flex flex-col h-full rounded">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded text-label-sm">Paper</span>
+<span class="material-symbols-outlined text-outline">school</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Confianza Interpersonal y Desarrollo Económico</h3>
+<p class="text-label-md text-on-tertiary-fixed-variant mb-4">Dra. Lucía Méndez, U. de Chile</p>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">
+                        Estudio cualitativo que explora la correlación entre la solidez de los vínculos comunitarios y la resiliencia económica local en el Maule.
+                    </p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<span class="text-label-sm text-outline">PDF • 3.0 MB</span>
+<a href="Report Ejecutivo C3S (2).pdf" download="Report Ejecutivo C3S (2).pdf" class="flex items-center gap-2 text-secondary font-bold hover:underline underline-offset-4">
+                            Descargar
+                            <span class="material-symbols-outlined text-[18px]">download</span>
+</a>
+</div>
+</div>
+<!-- Resource Card 5 -->
+<div class="resource-card bg-white border border-[#E5E5E5] p-8 flex flex-col h-full rounded">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded text-label-sm">Reporte</span>
+<span class="material-symbols-outlined text-outline">bar_chart</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Barómetro de Capital Social en Chile 2023</h3>
+<p class="text-label-md text-on-tertiary-fixed-variant mb-4">Equipo Técnico C3S</p>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">
+                        Resultados de la encuesta nacional sobre asociatividad y percepción de reciprocidad en las distintas regiones del país.
+                    </p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<span class="text-label-sm text-outline">PDF • 5.7 MB</span>
+<button class="flex items-center gap-2 text-secondary font-bold hover:underline underline-offset-4">
+                            Ver PDF
+                            <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Featured Highlight (Asymmetric Card) -->
+<div class="lg:col-span-1 bg-primary text-white p-8 flex flex-col justify-center rounded">
+<h3 class="font-headline-md text-headline-md mb-4">¿Buscas algo específico?</h3>
+<p class="mb-8 opacity-90">
+                        Si no encuentras el documento que necesitas o eres autor de una investigación relacionada al Capital Social, contáctanos.
+                    </p>
+<a class="inline-flex items-center justify-center bg-white text-primary font-bold py-3 px-6 rounded transition-transform hover:scale-105 active:scale-95" href="#">
+                        Solicitar Información
+                    </a>
+</div>
+</div>
+</section>
+<!-- Newsletter / Subscription Hook -->
+<section class="mt-24 max-w-container-max mx-auto px-margin-desktop">
+<div class="bg-secondary rounded-xl p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="max-w-md">
+<h2 class="font-headline-lg text-headline-lg mb-4">Recibe nuevas publicaciones</h2>
+<p class="opacity-80">Suscríbete a nuestro boletín mensual para estar al tanto de las últimas investigaciones y eventos del C3S.</p>
+</div>
+<div class="flex w-full md:w-auto gap-2">
+<input class="bg-white/10 border border-white/20 text-white placeholder-white/50 px-4 py-3 rounded-l focus:ring-0 focus:border-white w-full md:w-64" placeholder="tu@correo.com" type="email"/>
+<button class="bg-primary hover:bg-primary-container px-6 py-3 rounded-r font-bold transition-colors">
+                        Suscribirme
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-12 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">C3S</div>
+<p class="font-body-md text-on-surface-variant max-w-xs">
+                    Promoviendo el desarrollo del Capital Social como motor de cambio y bienestar en la sociedad chilena.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-on-surface">Enlaces Rápidos</h4>
+<div class="grid grid-cols-2 gap-2 text-label-md">
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Privacidad</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Términos</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Transparencia</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Suscripción</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-on-surface">Contacto</h4>
+<p class="text-on-surface-variant text-label-md">info@c3s.cl</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 flex items-center justify-center bg-white rounded-full border border-outline-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center bg-white rounded-full border border-outline-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant py-6 text-center text-label-sm text-secondary dark:text-secondary-fixed-dim">
+            © 2024 Círculo Chileno de Capital Social (C3S). Todos los derechos reservados.
+        </div>
+</footer>
+<script>
+        // Micro-interactions and Category filtering logic
+        document.querySelectorAll('button.rounded-full').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active classes from all
+                document.querySelectorAll('button.rounded-full').forEach(b => {
+                    b.classList.remove('bg-secondary', 'text-white');
+                    b.classList.add('border', 'border-outline', 'text-secondary');
+                });
+                // Add to current
+                this.classList.remove('border', 'border-outline', 'text-secondary');
+                this.classList.add('bg-secondary', 'text-white');
+                
+                // Add a small bounce effect to indicate filtering (visual feedback)
+                const grid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2');
+                grid.style.opacity = '0.5';
+                setTimeout(() => {
+                    grid.style.opacity = '1';
+                }, 300);
+            });
+        });
+    </script>
+</body></html>
