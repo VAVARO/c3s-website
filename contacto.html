@@ -149,78 +149,123 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
+<script>var submittedContacto = false;</script>
+<iframe name="hidden_iframe_contacto" id="hidden_iframe_contacto" style="display:none;" onload="if(submittedContacto) { showContactoSuccess(); }"></iframe>
+<script>
+  function showContactoSuccess() {
+    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo a la brevedad.');
+    document.getElementById('contacto-form').reset();
+  }
+</script>
+
 <!-- Form Section A: Contacto Directo Institucional -->
 <section id="contacto" class="bg-white border border-outline-variant p-8 md:p-10 rounded-2xl shadow-sm">
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-primary text-3xl">mail</span>
-<h2 class="font-headline-lg text-headline-lg text-primary">Contacta con el C3S</h2>
-</div>
-<p class="font-body-md text-on-surface-variant leading-relaxed mb-8">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="material-symbols-outlined text-primary text-3xl">mail</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary">Contacta con el C3S</h2>
+  </div>
+  <p class="font-body-md text-on-surface-variant leading-relaxed mb-8">
     ¿Tienes preguntas, quieres proponer una colaboración o solicitar información específica? Escríbenos directamente.
-</p>
+  </p>
 
-<form class="space-y-6" onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Te responderemos a la brevedad.');">
-<div>
-<label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="nombre-contacto">Nombre Completo</label>
-<input id="nombre-contacto" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
-</div>
+  <form id="contacto-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf-bX4j4X76c4sD5eQ-BN-k_Q07lSLLghfCxcVBnJEKgv5ZvQ/formResponse" method="POST" target="hidden_iframe_contacto" onsubmit="submittedContacto=true;" class="space-y-6">
+    
+    <!-- Nombre -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="nombre-contacto">Nombre Completo</label>
+      <input id="nombre-contacto" name="entry.1360843518" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+    </div>
 
-<div>
-<label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="email-contacto">Correo Electrónico</label>
-<input id="email-contacto" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
-</div>
+    <!-- Correo -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="email-contacto">Correo Electrónico</label>
+      <input id="email-contacto" name="entry.1733250446" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+    </div>
 
-<div>
-<label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="org-contacto">Organización / Institución <span class="text-on-surface-variant font-normal">(Opcional)</span></label>
-<input id="org-contacto" type="text" placeholder="Nombre de tu institución u organización" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
-</div>
+    <!-- Organización -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="org-contacto">Organización / Institución <span class="text-on-surface-variant font-normal">(Opcional)</span></label>
+      <input id="org-contacto" name="entry.2140630190" type="text" placeholder="Nombre de tu institución u organización" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+    </div>
 
-<div>
-<label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="motivo-contacto">Motivo de Contacto</label>
-<select id="motivo-contacto" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none">
-<option value="general">Información General</option>
-<option value="colaboracion">Propuesta de Colaboración</option>
-<option value="prensa">Prensa y Difusión</option>
-<option value="otro">Otro</option>
-</select>
-</div>
+    <!-- Motivo de Contacto -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="motivo-contacto">Motivo de Contacto</label>
+      <select id="motivo-contacto" name="entry.765317427" required class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none">
+        <option value="Información General">Información General</option>
+        <option value="Propuesta de Colaboración">Propuesta de Colaboración</option>
+        <option value="Prensa y Difusión">Prensa y Difusión</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
 
-<div>
-<label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="mensaje-contacto">Mensaje</label>
-<textarea id="mensaje-contacto" required rows="5" placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none resize-none"></textarea>
-</div>
+    <!-- Mensaje -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="mensaje-contacto">Mensaje</label>
+      <textarea id="mensaje-contacto" name="entry.601144988" required rows="5" placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none resize-none"></textarea>
+    </div>
 
-<button type="submit" class="w-full sm:w-auto bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer">
-    Enviar Mensaje
-</button>
-</form>
+    <button type="submit" class="w-full sm:w-auto bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer">
+      Enviar Mensaje
+    </button>
+  </form>
 </section>
+
+<script>var submitted = false;</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showMailingSuccess(); }"></iframe>
+<script>
+  function showMailingSuccess() {
+    alert('¡Gracias por sumarte a la Red de Capital Social! Tus datos han sido registrados con éxito.');
+    document.getElementById('mailing-form').reset();
+  }
+</script>
 
 <!-- Form Section B: Suscripción al Mailing List -->
 <section id="mailing-list" class="bg-secondary text-on-secondary rounded-2xl p-8 md:p-10 shadow-md">
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-on-secondary text-3xl">mark_email_unread</span>
-<h2 class="font-headline-lg text-headline-lg text-on-secondary">Únete a nuestra Red de Capital Social</h2>
-</div>
-<p class="font-body-md text-on-secondary/90 leading-relaxed mb-8">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="material-symbols-outlined text-on-secondary text-3xl">mark_email_unread</span>
+    <h2 class="font-headline-lg text-headline-lg text-on-secondary">Únete a nuestra Red de Capital Social</h2>
+  </div>
+  <p class="font-body-md text-on-secondary/90 leading-relaxed mb-8">
     Recibe invitaciones exclusivas a nuestros próximos encuentros, conversatorios y boletines mensuales.
-</p>
+  </p>
 
-<form class="space-y-6" onsubmit="event.preventDefault(); alert('¡Bienvenido a la Red de Capital Social!');">
-<div>
-<label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="nombre-mailing">Nombre</label>
-<input id="nombre-mailing" required type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
-</div>
+  <form id="mailing-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfVF16roYVJJAeWk3171e7s1BFISfbe5zrTJSWJSV_LpoLGjw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="space-y-6">
+    
+    <!-- Nombre -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="nombre-mailing">Nombre Completo</label>
+      <input id="nombre-mailing" name="entry.112852596" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+    </div>
 
-<div>
-<label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="email-mailing">Correo Electrónico</label>
-<input id="email-mailing" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
-</div>
+    <!-- Correo -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="email-mailing">Correo Electrónico</label>
+      <input id="email-mailing" name="entry.2104777613" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+    </div>
 
-<button type="submit" class="w-full sm:w-auto bg-white text-secondary font-bold px-8 py-3 rounded-lg hover:bg-secondary-fixed active:scale-95 transition-all cursor-pointer">
-    Unirse al Mailing List
-</button>
-</form>
+    <!-- País y Ciudad o Localidad (Grid 2 columnas en desktop) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="pais-mailing">País de procedencia</label>
+        <input id="pais-mailing" name="entry.221556986" required type="text" placeholder="Ej: Chile, Argentina, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="ciudad-mailing">Ciudad o Localidad</label>
+        <input id="ciudad-mailing" name="entry.1395423488" required type="text" placeholder="Ej: Santiago, Coyhaique, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      </div>
+    </div>
+
+    <!-- Organización -->
+    <div>
+      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="org-mailing">Organización / Institución <span class="text-white/70 font-normal">(Opcional)</span></label>
+      <input id="org-mailing" name="entry.91443577" type="text" placeholder="Nombre de tu organización, universidad o empresa" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+    </div>
+
+    <button type="submit" class="w-full sm:w-auto bg-white text-secondary font-bold px-8 py-3 rounded-lg hover:bg-secondary-fixed active:scale-95 transition-all cursor-pointer">
+      Unirse al Mailing List
+    </button>
+  </form>
 </section>
 
 </div>
