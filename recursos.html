@@ -121,24 +121,32 @@
 </head>
 <body class="font-body-md text-on-surface">
 <!-- TopNavBar -->
-<header class="bg-background dark:bg-background border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
-<div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
-<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">C3S</div>
-<nav class="hidden md:flex items-center gap-8 font-body-md text-label-md">
-<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="index.html">Inicio</a>
-<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="que-es-capital-social.html">¿Qué es Capital Social?</a>
-<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="quienes-somos.html">¿Quiénes somos?</a>
-<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="encuentros.html">Encuentros</a>
-<!-- Active Link: Recursos -->
-<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1" href="recursos.html">Recursos</a>
-<a class="text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors" href="contacto.html">Contacto</a>
+<nav class="bg-background border-b border-outline-variant sticky top-0 z-50">
+  <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
+    <!-- Brand Logo -->
+    <a href="index.html" class="font-headline-md text-headline-md font-bold text-primary">C3S</a>
+
+    <!-- Active Navigation Links -->
+    <div class="hidden md:flex gap-8 items-center h-full">
+      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="proximo-evento.html">Próximo Evento</a>
+      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos.html">¿Quiénes somos?</a>
+      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="encuentros.html">Encuentros</a>
+      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="contacto.html">Contacto</a>
+
+      <!-- Hidden Links (Commented for future use) -->
+      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="index.html">Inicio</a> -->
+      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="que-es-capital-social.html">¿Qué es Capital Social?</a> -->
+      <!-- <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="recursos.html">Recursos</a> -->
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="md:hidden text-primary">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
 </nav>
-<a href="contacto.html#mailing-list" class="bg-primary-container text-on-primary font-bold px-6 py-2 rounded transition-transform scale-95 active:scale-90 duration-200 inline-block">
-                Unirse
-</a>
-</div>
-</header>
-<main class="pt-32 pb-24">
+
+<main>
 <!-- Hero Section -->
 <section class="max-w-container-max mx-auto px-margin-desktop mb-16">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
