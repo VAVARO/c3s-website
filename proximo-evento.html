@@ -166,18 +166,12 @@
     <!-- Event Details & Form Container -->
     <div class="bg-white border border-outline-variant rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
       
-      <!-- Event Information Column -->
+      <!-- Left Column: Details (Cleaned) -->
       <div class="lg:col-span-5 space-y-6">
-        
-        <!-- Presentation Title & Integrated 3xi Logo -->
         <div class="space-y-3">
           <h2 class="font-display-lg text-2xl md:text-4xl text-primary font-bold leading-tight">
             "3xi: El potencial del Encuentro"
           </h2>
-          <div class="flex items-center gap-3 pt-1">
-            <span class="text-xs font-label-sm uppercase tracking-wider text-outline font-medium">Junto a:</span>
-            <img src="./3xi.png" alt="3xi Logo" class="h-8 md:h-10 object-contain opacity-90"/>
-          </div>
         </div>
 
         <p class="font-body-md text-on-surface-variant leading-relaxed">
@@ -222,12 +216,12 @@
         </div>
       </div>
 
-      <!-- Registration Form Column -->
+      <!-- Right Column: Registration Form (Updated Inputs) -->
       <div class="lg:col-span-7 bg-surface-container-low p-6 md:p-8 rounded-xl border border-outline-variant">
         <h3 class="font-headline-md text-headline-md text-primary mb-2">Inscríbete al Evento</h3>
         <p class="font-body-md text-on-surface-variant mb-6 text-sm">Completa tus datos para confirmar tu asistencia al próximo encuentro.</p>
 
-        <!-- Hidden Iframe Submission Trick -->
+        <!-- Background Submission Frame -->
         <script>var submittedEvento = false;</script>
         <iframe name="hidden_iframe_evento" id="hidden_iframe_evento" style="display:none;" onload="if(submittedEvento) { showEventoSuccess(); }"></iframe>
         <script>
@@ -237,35 +231,44 @@
           }
         </script>
 
-        <form id="evento-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfVF16roYVJJAeWk3171e7s1BFISfbe5zrTJSWJSV_LpoLGjw/formResponse" method="POST" target="hidden_iframe_evento" onsubmit="submittedEvento=true;" class="space-y-4">
+        <form id="evento-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdYhzaYUOCda9rV9g7rHo_2RgVP_JeCMXskSlgWa1zMk9RNvg/formResponse" method="POST" target="hidden_iframe_evento" onsubmit="submittedEvento=true;" class="space-y-4">
           
+          <!-- Nombre -->
           <div>
-            <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="nombre-evento">Nombre Completo</label>
-            <input id="nombre-evento" name="entry.112852596" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="nombre-evento">Nombre Completo <span class="text-primary">*</span></label>
+            <input id="nombre-evento" name="entry.213414172" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
           </div>
 
+          <!-- Correo -->
           <div>
-            <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="email-evento">Correo Electrónico</label>
-            <input id="email-evento" name="entry.2104777613" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="email-evento">Correo Electrónico <span class="text-primary">*</span></label>
+            <input id="email-evento" name="entry.2145342347" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="pais-evento">País de procedencia</label>
-              <input id="pais-evento" name="entry.221556986" required type="text" placeholder="Ej: Chile" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+          <!-- Organización (si aplica) -->
+          <div>
+            <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="org-evento">Organización <span class="text-on-surface-variant font-normal">(Si aplica)</span></label>
+            <input id="org-evento" name="entry.1851145845" type="text" placeholder="Tu organización, universidad o empresa" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+          </div>
+
+          <!-- Cena Options -->
+          <div class="space-y-2 pt-1">
+            <label class="block font-label-md text-xs font-semibold text-on-surface">
+              ¿Participarás de la Cena posterior al Evento? <span class="text-primary">*</span>
+            </label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="flex items-center justify-center gap-2 p-3 rounded-lg border border-outline-variant bg-white cursor-pointer hover:border-primary transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5 has-[:checked]:text-primary font-medium text-sm">
+                <input type="radio" name="entry.2114283128" value="Sí" required class="accent-primary w-4 h-4" />
+                <span>Sí, asistiré</span>
+              </label>
+              <label class="flex items-center justify-center gap-2 p-3 rounded-lg border border-outline-variant bg-white cursor-pointer hover:border-primary transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5 has-[:checked]:text-primary font-medium text-sm">
+                <input type="radio" name="entry.2114283128" value="No" required class="accent-primary w-4 h-4" />
+                <span>No podré asistir</span>
+              </label>
             </div>
-            <div>
-              <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="ciudad-evento">Ciudad o Localidad</label>
-              <input id="ciudad-evento" name="entry.1395423488" required type="text" placeholder="Ej: Santiago, Coyhaique, etc." class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
-            </div>
           </div>
 
-          <div>
-            <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="org-evento">Organización / Institución <span class="text-on-surface-variant font-normal">(Opcional)</span></label>
-            <input id="org-evento" name="entry.91443577" type="text" placeholder="Tu organización o universidad" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
-          </div>
-
-          <button type="submit" class="w-full bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer mt-2">
+          <button type="submit" class="w-full bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer mt-4">
             Confirmar mi Inscripción
           </button>
         </form>
