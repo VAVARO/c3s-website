@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="light" lang="es">
+<html class="light" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contacto y Red - C3S</title>
+<title>Contact - C3S | Chilean Social Capital Circle</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -124,30 +124,30 @@
 
     <!-- Active Navigation Links -->
     <div class="hidden md:flex gap-8 items-center h-full">
-      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="proximo-evento.html">Próximo Evento</a>
-      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos.html">¿Quiénes somos?</a>
-      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="encuentros.html">Encuentros</a>
-      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="contacto.html">Contacto</a>
+      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="proximo-evento.html">Upcoming Event</a>
+      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos.html">About Us</a>
+      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="encuentros.html">Encounters</a>
+      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="contacto.html">Contact</a>
 
       <!-- Hidden Links (Commented for future use) -->
-      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="index.html">Inicio</a> -->
-      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="que-es-capital-social.html">¿Qué es Capital Social?</a> -->
-      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="recursos.html">Recursos</a> -->
+      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="index.html">Home</a> -->
+      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="que-es-capital-social.html">What is Social Capital?</a> -->
+      <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="recursos.html">Resources</a> -->
 
       <!-- Language Toggle -->
       <div class="flex items-center gap-1 font-label-sm text-xs font-semibold uppercase tracking-wider ml-4 border-l border-outline-variant pl-4">
-        <span class="text-primary font-bold">ES</span>
+        <a href="../contacto.html" class="text-on-surface-variant hover:text-secondary transition-colors">ES</a>
         <span class="text-outline">|</span>
-        <a href="en/contacto.html" class="text-on-surface-variant hover:text-secondary transition-colors">EN</a>
+        <span class="text-primary font-bold">EN</span>
       </div>
     </div>
 
     <!-- Mobile Language Toggle & Menu Toggle -->
     <div class="flex md:hidden items-center gap-4">
       <div class="flex items-center gap-1 font-label-sm text-xs font-semibold uppercase tracking-wider">
-        <span class="text-primary font-bold">ES</span>
+        <a href="../contacto.html" class="text-on-surface-variant hover:text-secondary transition-colors">ES</a>
         <span class="text-outline">|</span>
-        <a href="en/contacto.html" class="text-on-surface-variant hover:text-secondary transition-colors">EN</a>
+        <span class="text-primary font-bold">EN</span>
       </div>
       <button class="text-primary">
         <span class="material-symbols-outlined">menu</span>
@@ -160,9 +160,9 @@
 <!-- Hero Header -->
 <header class="mb-16">
 <div class="editorial-line mb-6"></div>
-<h1 class="font-display-lg text-display-lg text-primary mb-4">Contacto y Red C3S</h1>
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Contact & C3S Network</h1>
 <p class="font-body-lg text-body-lg max-w-3xl text-on-surface-variant leading-relaxed">
-    Ponte en contacto con nuestro equipo institucional o súmate a nuestra red para recibir novedades y convocatorias.
+    Get in touch with our institutional team or join our network to receive news, announcements, and invitations.
 </p>
 </header>
 
@@ -172,60 +172,60 @@
 <iframe name="hidden_iframe_contacto" id="hidden_iframe_contacto" style="display:none;" onload="if(submittedContacto) { showContactoSuccess(); }"></iframe>
 <script>
   function showContactoSuccess() {
-    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo a la brevedad.');
+    alert('Thank you for your message! We will get in touch with you shortly.');
     document.getElementById('contacto-form').reset();
   }
 </script>
 
-<!-- Form Section A: Contacto Directo Institucional -->
+<!-- Form Section A: Direct Institutional Contact -->
 <section id="contacto" class="bg-white border border-outline-variant p-8 md:p-10 rounded-2xl shadow-sm">
   <div class="flex items-center gap-3 mb-4">
     <span class="material-symbols-outlined text-primary text-3xl">mail</span>
-    <h2 class="font-headline-lg text-headline-lg text-primary">Contacta con el C3S</h2>
+    <h2 class="font-headline-lg text-headline-lg text-primary">Contact C3S</h2>
   </div>
   <p class="font-body-md text-on-surface-variant leading-relaxed mb-8">
-    ¿Tienes preguntas, quieres proponer una colaboración o solicitar información específica? Escríbenos directamente.
+    Have questions, want to propose a collaboration, or request specific information? Write to us directly.
   </p>
 
   <form id="contacto-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf-bX4j4X76c4sD5eQ-BN-k_Q07lSLLghfCxcVBnJEKgv5ZvQ/formResponse" method="POST" target="hidden_iframe_contacto" onsubmit="submittedContacto=true;" class="space-y-6">
     
-    <!-- Nombre -->
+    <!-- Name -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="nombre-contacto">Nombre Completo</label>
-      <input id="nombre-contacto" name="entry.1360843518" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="nombre-contacto">Full Name</label>
+      <input id="nombre-contacto" name="entry.1360843518" required type="text" placeholder="Your full name" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
     </div>
 
-    <!-- Correo -->
+    <!-- Email -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="email-contacto">Correo Electrónico</label>
-      <input id="email-contacto" name="entry.1733250446" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="email-contacto">Email Address</label>
+      <input id="email-contacto" name="entry.1733250446" required type="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
     </div>
 
-    <!-- Organización -->
+    <!-- Organization -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="org-contacto">Organización / Institución <span class="text-on-surface-variant font-normal">(Opcional)</span></label>
-      <input id="org-contacto" name="entry.2140630190" type="text" placeholder="Nombre de tu institución u organización" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="org-contacto">Organization / Institution <span class="text-on-surface-variant font-normal">(Optional)</span></label>
+      <input id="org-contacto" name="entry.2140630190" type="text" placeholder="Name of your institution or organization" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
     </div>
 
-    <!-- Motivo de Contacto -->
+    <!-- Reason for Contact -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="motivo-contacto">Motivo de Contacto</label>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="motivo-contacto">Reason for Contact</label>
       <select id="motivo-contacto" name="entry.765317427" required class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none">
-        <option value="Información General">Información General</option>
-        <option value="Propuesta de Colaboración">Propuesta de Colaboración</option>
-        <option value="Prensa y Difusión">Prensa y Difusión</option>
-        <option value="Otro">Otro</option>
+        <option value="Información General">General Information</option>
+        <option value="Propuesta de Colaboración">Collaboration Proposal</option>
+        <option value="Prensa y Difusión">Press and Media</option>
+        <option value="Otro">Other</option>
       </select>
     </div>
 
-    <!-- Mensaje -->
+    <!-- Message -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="mensaje-contacto">Mensaje</label>
-      <textarea id="mensaje-contacto" name="entry.601144988" required rows="5" placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none resize-none"></textarea>
+      <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="mensaje-contacto">Message</label>
+      <textarea id="mensaje-contacto" name="entry.601144988" required rows="5" placeholder="Write your message here..." class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none resize-none"></textarea>
     </div>
 
     <button type="submit" class="w-full sm:w-auto bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer">
-      Enviar Mensaje
+      Send Message
     </button>
   </form>
 </section>
@@ -234,55 +234,55 @@
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showMailingSuccess(); }"></iframe>
 <script>
   function showMailingSuccess() {
-    alert('¡Gracias por sumarte a la Red de Capital Social! Tus datos han sido registrados con éxito.');
+    alert('Thank you for joining the Social Capital Network! Your details have been successfully registered.');
     document.getElementById('mailing-form').reset();
   }
 </script>
 
-<!-- Form Section B: Suscripción al Mailing List -->
+<!-- Form Section B: Mailing List Subscription -->
 <section id="mailing-list" class="bg-secondary text-on-secondary rounded-2xl p-8 md:p-10 shadow-md">
   <div class="flex items-center gap-3 mb-4">
     <span class="material-symbols-outlined text-on-secondary text-3xl">mark_email_unread</span>
-    <h2 class="font-headline-lg text-headline-lg text-on-secondary">Únete a nuestra Red de Capital Social</h2>
+    <h2 class="font-headline-lg text-headline-lg text-on-secondary">Join our Social Capital Network</h2>
   </div>
   <p class="font-body-md text-on-secondary/90 leading-relaxed mb-8">
-    Recibe invitaciones exclusivas a nuestros próximos encuentros, conversatorios y boletines mensuales.
+    Receive exclusive invitations to our upcoming encounters, conversations, and monthly bulletins.
   </p>
 
   <form id="mailing-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfVF16roYVJJAeWk3171e7s1BFISfbe5zrTJSWJSV_LpoLGjw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="space-y-6">
     
-    <!-- Nombre -->
+    <!-- Name -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="nombre-mailing">Nombre Completo</label>
-      <input id="nombre-mailing" name="entry.112852596" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="nombre-mailing">Full Name</label>
+      <input id="nombre-mailing" name="entry.112852596" required type="text" placeholder="Your full name" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
     </div>
 
-    <!-- Correo -->
+    <!-- Email -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="email-mailing">Correo Electrónico</label>
-      <input id="email-mailing" name="entry.2104777613" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="email-mailing">Email Address</label>
+      <input id="email-mailing" name="entry.2104777613" required type="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
     </div>
 
-    <!-- País y Ciudad o Localidad (Grid 2 columnas en desktop) -->
+    <!-- Country and City/Location -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="pais-mailing">País de procedencia</label>
-        <input id="pais-mailing" name="entry.221556986" required type="text" placeholder="Ej: Chile, Argentina, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+        <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="pais-mailing">Country of Origin</label>
+        <input id="pais-mailing" name="entry.221556986" required type="text" placeholder="e.g. Chile, United States, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
       </div>
       <div>
-        <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="ciudad-mailing">Ciudad o Localidad</label>
-        <input id="ciudad-mailing" name="entry.1395423488" required type="text" placeholder="Ej: Santiago, Coyhaique, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+        <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="ciudad-mailing">City or Location</label>
+        <input id="ciudad-mailing" name="entry.1395423488" required type="text" placeholder="e.g. Santiago, London, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
       </div>
     </div>
 
-    <!-- Organización -->
+    <!-- Organization -->
     <div>
-      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="org-mailing">Organización / Institución <span class="text-white/70 font-normal">(Opcional)</span></label>
-      <input id="org-mailing" name="entry.91443577" type="text" placeholder="Nombre de tu organización, universidad o empresa" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="org-mailing">Organization / Institution <span class="text-white/70 font-normal">(Optional)</span></label>
+      <input id="org-mailing" name="entry.91443577" type="text" placeholder="Name of your organization, university, or company" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
     </div>
 
     <button type="submit" class="w-full sm:w-auto bg-white text-secondary font-bold px-8 py-3 rounded-lg hover:bg-secondary-fixed active:scale-95 transition-all cursor-pointer">
-      Unirse al Mailing List
+      Join Mailing List
     </button>
   </form>
 </section>
@@ -296,32 +296,32 @@
 <div class="space-y-4">
 <span class="font-headline-md text-headline-md text-primary font-bold">C3S</span>
 <p class="font-body-md text-on-surface-variant max-w-xs leading-relaxed">
-    Círculo Chileno de Capital Social. Fomentando la colaboración y la confianza para el desarrollo nacional.
+    Chilean Social Capital Circle. Fostering collaboration and trust for national development.
 </p>
 </div>
 <div class="flex flex-col gap-3">
-  <h4 class="font-label-md text-primary font-bold uppercase tracking-widest mb-2">El Círculo</h4>
+  <h4 class="font-label-md text-primary font-bold uppercase tracking-widest mb-2">The Circle</h4>
   
   <!-- Active Links Matching Header -->
-  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="proximo-evento.html">Próximo Evento</a>
-  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="quienes-somos.html">¿Quiénes somos?</a>
-  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="encuentros.html">Encuentros</a>
-  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="contacto.html">Contacto</a>
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="proximo-evento.html">Upcoming Event</a>
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="quienes-somos.html">About Us</a>
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="encuentros.html">Encounters</a>
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="contacto.html">Contact</a>
 
   <!-- Commented Links (Preserved for future reactivations) -->
-  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="index.html">Inicio</a> -->
-  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="que-es-capital-social.html">¿Qué es Capital Social?</a> -->
-  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="recursos.html">Recursos</a> -->
+  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="index.html">Home</a> -->
+  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="que-es-capital-social.html">What is Social Capital?</a> -->
+  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="recursos.html">Resources</a> -->
 </div>
 <div class="space-y-6">
-<span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contacto</span>
+<span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contact</span>
 <div class="flex gap-4">
 <a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="contacto.html#contacto">
 <span class="material-symbols-outlined text-[20px]">mail</span>
 </a>
 </div>
 <p class="text-label-sm text-on-surface-variant/70 italic">
-    © 2026 Círculo Chileno de Capital Social (C3S). Todos los derechos reservados.
+    © 2026 Chilean Social Capital Circle (C3S). All rights reserved.
 </p>
 </div>
 </div>

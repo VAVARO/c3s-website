@@ -137,12 +137,26 @@
       <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="index.html">Inicio</a> -->
       <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="que-es-capital-social.html">¿Qué es Capital Social?</a> -->
       <!-- <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="recursos.html">Recursos</a> -->
+
+      <!-- Language Toggle -->
+      <div class="flex items-center gap-1 font-label-sm text-xs font-semibold uppercase tracking-wider ml-4 border-l border-outline-variant pl-4">
+        <span class="text-primary font-bold">ES</span>
+        <span class="text-outline">|</span>
+        <a href="en/recursos.html" class="text-on-surface-variant hover:text-secondary transition-colors">EN</a>
+      </div>
     </div>
 
-    <!-- Mobile Menu Toggle -->
-    <button class="md:hidden text-primary">
-      <span class="material-symbols-outlined">menu</span>
-    </button>
+    <!-- Mobile Language Toggle & Menu Toggle -->
+    <div class="flex md:hidden items-center gap-4">
+      <div class="flex items-center gap-1 font-label-sm text-xs font-semibold uppercase tracking-wider">
+        <span class="text-primary font-bold">ES</span>
+        <span class="text-outline">|</span>
+        <a href="en/recursos.html" class="text-on-surface-variant hover:text-secondary transition-colors">EN</a>
+      </div>
+      <button class="text-primary">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -304,39 +318,40 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-12 px-margin-desktop max-w-container-max mx-auto">
-<div class="flex flex-col gap-4">
-<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">C3S</div>
-<p class="font-body-md text-on-surface-variant max-w-xs">
-                    Promoviendo el desarrollo del Capital Social como motor de cambio y bienestar en la sociedad chilena.
-                </p>
+<footer class="bg-surface-container border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto items-start">
+<div class="space-y-4">
+<span class="font-headline-md text-headline-md text-primary font-bold">C3S</span>
+<p class="font-body-md text-on-surface-variant max-w-xs leading-relaxed">
+    Círculo Chileno de Capital Social. Fomentando la colaboración y la confianza para el desarrollo nacional.
+</p>
 </div>
-<div class="flex flex-col gap-4">
-<h4 class="font-bold text-on-surface">Enlaces Rápidos</h4>
-<div class="grid grid-cols-2 gap-2 text-label-md">
-<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Privacidad</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Términos</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Transparencia</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Suscripción</a>
+<div class="flex flex-col gap-3">
+  <h4 class="font-label-md text-primary font-bold uppercase tracking-widest mb-2">El Círculo</h4>
+  
+  <!-- Active Links Matching Header -->
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="proximo-evento.html">Próximo Evento</a>
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="quienes-somos.html">¿Quiénes somos?</a>
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="encuentros.html">Encuentros</a>
+  <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="contacto.html">Contacto</a>
+
+  <!-- Commented Links (Preserved for future reactivations) -->
+  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="index.html">Inicio</a> -->
+  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="que-es-capital-social.html">¿Qué es Capital Social?</a> -->
+  <!-- <a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="recursos.html">Recursos</a> -->
 </div>
-</div>
-<div class="flex flex-col gap-4">
-<h4 class="font-bold text-on-surface">Contacto</h4>
-<p class="text-on-surface-variant text-label-md">info@c3s.cl</p>
+<div class="space-y-6">
+<span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contacto</span>
 <div class="flex gap-4">
-<a class="w-10 h-10 flex items-center justify-center bg-white rounded-full border border-outline-variant hover:text-secondary transition-colors" href="#">
-<span class="material-symbols-outlined">share</span>
-</a>
-<a class="w-10 h-10 flex items-center justify-center bg-white rounded-full border border-outline-variant hover:text-secondary transition-colors" href="#">
-<span class="material-symbols-outlined">public</span>
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="contacto.html#contacto">
+<span class="material-symbols-outlined text-[20px]">mail</span>
 </a>
 </div>
+<p class="text-label-sm text-on-surface-variant/70 italic">
+    © 2026 Círculo Chileno de Capital Social (C3S). Todos los derechos reservados.
+</p>
 </div>
 </div>
-<div class="border-t border-outline-variant py-6 text-center text-label-sm text-secondary dark:text-secondary-fixed-dim">
-            © 2024 Círculo Chileno de Capital Social (C3S). Todos los derechos reservados.
-        </div>
 </footer>
 <script>
         // Micro-interactions and Category filtering logic
