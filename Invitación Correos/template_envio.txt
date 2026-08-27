@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7mo Encuentro C3S</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, table, td, p, a {
+            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #fcf9f8; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: #1b1c1c; -webkit-font-smoothing: antialiased;">
+
+    <!-- Contenedor Base -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf9f8; padding: 32px 12px;">
+        <tr>
+            <td align="center">
+
+                <!-- Tarjeta Principal (Máx 600px) -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e4beb8; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+
+                    <!-- Encabezado Rojo Institucional -->
+                    <tr>
+                        <td align="center" style="background-color: #770000; padding: 28px 24px;">
+                            <p style="margin: 0 0 6px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #ffdad4; font-weight: 700; font-family: 'Work Sans', Arial, sans-serif;">
+                                SAVE THE DATE
+                            </p>
+                            <h1 class="font-heading" style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 700; line-height: 1.3; font-family: 'Be Vietnam Pro', Arial, sans-serif;">
+                                7mo Encuentro del Círculo Chileno de Capital Social
+                            </h1>
+                        </td>
+                    </tr>
+
+                    <!-- Banner Organizadores y Auspiciadores -->
+                    <tr>
+                        <td align="center" style="padding: 28px 30px; background-color: #ffffff; border-bottom: 1px solid #f0eded;">
+                            <!-- Organizan -->
+                            <p style="margin: 0 0 16px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #906f6a; font-weight: 700; font-family: 'Work Sans', Arial, sans-serif;">
+                                Organizan
+                            </p>
+                            <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                                <tr>
+                                    <td width="180" align="center" style="vertical-align: middle; padding: 0 10px;">
+                                        <img src="https://raw.githubusercontent.com/VAVARO/c3s-website/main/logo_c3s_tentativo.png"
+                                            alt="C3S" height="90"
+                                            style="display: block; height: 90px; width: auto; max-width: 180px; object-fit: contain; margin: 0 auto;">
+                                    </td>
+                                    <td width="40" align="center" style="vertical-align: middle; color: #e4beb8; font-size: 28px; font-weight: 300;">
+                                        |
+                                    </td>
+                                    <td width="180" align="center" style="vertical-align: middle; padding: 0 10px;">
+                                        <img src="https://raw.githubusercontent.com/VAVARO/c3s-website/main/logos/ISCA.jpg"
+                                            alt="ISCA" height="105"
+                                            style="display: block; height: 105px; width: auto; max-width: 220px; object-fit: contain; margin: 0 auto;">
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- Divisor Sutil -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 22px 0 18px 0;">
+                                <tr>
+                                    <td style="border-top: 1px solid #f0eded; font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                </tr>
+                            </table>
+
+                            <!-- Auspician -->
+                            <p style="margin: 0 0 16px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #906f6a; font-weight: 700; font-family: 'Work Sans', Arial, sans-serif;">
+                                Auspician
+                            </p>
+                            <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                                <tr>
+                                    <td width="180" align="center" style="vertical-align: middle; padding: 0 10px;">
+                                        <a href="https://ambarchile.cl/" target="_blank" style="text-decoration: none; display: inline-block;">
+                                            <img src="https://raw.githubusercontent.com/VAVARO/c3s-website/main/logos/Logo%20Ambar%20Chile%20Azul%20PNG.png"
+                                                alt="Ámbar Chile" height="65"
+                                                style="display: block; height: 65px; width: auto; max-width: 150px; object-fit: contain; margin: 0 auto; border: 0;">
+                                        </a>
+                                    </td>
+                                    <td width="40" align="center" style="vertical-align: middle; color: #e4beb8; font-size: 28px; font-weight: 300;">
+                                        |
+                                    </td>
+                                    <td width="180" align="center" style="vertical-align: middle; padding: 0 10px;">
+                                        <a href="https://minverso.com/" target="_blank" style="text-decoration: none; display: inline-block;">
+                                            <img src="https://raw.githubusercontent.com/VAVARO/c3s-website/main/logos/Minverso-brand-horizontal1%20(1).png"
+                                                alt="Minverso" height="65"
+                                                style="display: block; height: 65px; width: auto; max-width: 150px; object-fit: contain; margin: 0 auto; border: 0;">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Cuerpo Principal -->
+                    <tr>
+                        <td style="padding: 32px 32px 20px 32px;">
+
+                            <p style="font-size: 16px; margin: 0 0 14px 0; color: #1b1c1c; font-family: 'Work Sans', Arial, sans-serif;">
+                                <?= tratamiento ?> <strong><?= nombre ?></strong>,
+                            </p>
+
+                            <p style="font-size: 14px; line-height: 1.6; color: #404040; margin: 0 0 22px 0; font-family: 'Work Sans', Arial, sans-serif;">
+                                En septiembre retomamos los encuentros del Círculo Chileno de Capital Social (C3S), esta vez con un nuevo horario y locación. Pronto te iremos compartiendo los panelistas y el formato de esta edición. Por ahora, te invitamos a reservar la fecha para que no te lo pierdas; en los próximos días te contaremos todos los detalles.
+                            </p>
+
+                            <!-- Tarjeta de la Sesión -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf9f8; border: 1px solid #e4beb8; border-radius: 12px; margin-bottom: 24px;">
+                                <tr>
+                                    <td style="padding: 24px;">
+
+                                        <h2 class="font-heading" style="margin: 0 0 8px 0; font-size: 20px; color: #770000; font-weight: 700; font-family: 'Be Vietnam Pro', Arial, sans-serif;">
+                                            3xi: El potencial del Encuentro
+                                        </h2>
+
+                                        <p style="margin: 0 0 18px 0; font-size: 13px; line-height: 1.5; color: #5b403c; font-family: 'Work Sans', Arial, sans-serif;">
+                                            Una conversación sobre Chile, el mundo y el desafío de construir confianza en la sociedad, liderada por <a href="https://3xi.cl" target="_blank" style="color: #305ea2; text-decoration: underline; font-weight: 600;">3xi</a>.
+                                        </p>
+
+                                        <!-- Detalles del Evento -->
+                                        <table border="0" cellpadding="5" cellspacing="0" width="100%" style="font-size: 13px; color: #1b1c1c; border-top: 1px solid #e4beb8; padding-top: 10px;">
+                                            <tr>
+                                                <td width="90" style="color: #906f6a; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Fecha:</td>
+                                                <td style="font-weight: 600; color: #1b1c1c;">23 de septiembre</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="90" style="color: #906f6a; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Hora:</td>
+                                                <td style="font-weight: 600; color: #1b1c1c;">18:30 hrs</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="90" style="color: #906f6a; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Lugar:</td>
+                                                <td>
+                                                    <a href="https://maps.app.goo.gl/uY75zaAbeY4kBGNq7" target="_blank" style="color: #770000; text-decoration: underline; font-weight: 600;">
+                                                        Auditorio NIDO Lucía
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Botón Principal (CTA) -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 28px 0 20px 0;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="https://capitalsocialchile.cl/proximo-evento" target="_blank" style="background-color: #770000; color: #ffffff; display: inline-block; padding: 14px 34px; font-size: 15px; font-weight: 700; text-decoration: none; border-radius: 8px; font-family: 'Work Sans', Arial, sans-serif; letter-spacing: 0.3px;">
+                                            Inscribirme al Encuentro
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+
+                    <!-- Pie del Boletín -->
+                    <tr>
+                        <td style="background-color: #f6f3f2; padding: 20px 30px; text-align: center; border-top: 1px solid #e4beb8;">
+                            <p class="font-heading" style="margin: 0 0 4px 0; font-size: 12px; font-weight: 700; color: #770000; font-family: 'Be Vietnam Pro', Arial, sans-serif;">
+                                Círculo Chileno de Capital Social (C3S)
+                            </p>
+                            <p style="margin: 0; font-size: 11px; color: #5b403c; line-height: 1.4; font-family: 'Work Sans', Arial, sans-serif;">
+                                Visita nuestra <a href="https://capitalsocialchile.cl/quienes-somos" target="_blank" style="color: #770000; text-decoration: underline;">página web</a>.<br>
+                                Para consultas o actualizar tus preferencias, responde directamente a este correo.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
