@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Active Pages (Spanish) -->
+  <url>
+    <loc>https://capitalsocialchile.cl/proximo-evento</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/proximo-evento"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/proximo-evento"/>
+  </url>
+  <url>
+    <loc>https://capitalsocialchile.cl/quienes-somos</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/quienes-somos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/quienes-somos"/>
+  </url>
+  <url>
+    <loc>https://capitalsocialchile.cl/encuentros</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/encuentros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/encuentros"/>
+  </url>
+  <url>
+    <loc>https://capitalsocialchile.cl/contacto</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/contacto"/>
+  </url>
+
+  <!-- Active Pages (English) -->
+  <url>
+    <loc>https://capitalsocialchile.cl/en/proximo-evento</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/proximo-evento"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/proximo-evento"/>
+  </url>
+  <url>
+    <loc>https://capitalsocialchile.cl/en/quienes-somos</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/quienes-somos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/quienes-somos"/>
+  </url>
+  <url>
+    <loc>https://capitalsocialchile.cl/en/encuentros</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/encuentros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/encuentros"/>
+  </url>
+  <url>
+    <loc>https://capitalsocialchile.cl/en/contacto</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://capitalsocialchile.cl/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capitalsocialchile.cl/en/contacto"/>
+  </url>
+</urlset>
