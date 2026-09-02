@@ -118,19 +118,7 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <? if (typeof cena !== 'undefined' && cena) { ?>
-                                            <tr>
-                                                <td width="90" style="color: #906f6a; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Cena:</td>
-                                                <td style="font-weight: 600; color: #1b1c1c;"><?= cena ?></td>
-                                            </tr>
-                                            <? } ?>
                                         </table>
-
-                                        <? if (typeof cena !== 'undefined' && cena) { ?>
-                                        <p style="font-size: 12px; color: #5b403c; line-height: 1.5; font-style: italic; text-align: center; margin: 16px 0 0 0;">
-                                            * El lugar de la cena posterior será informado por correo a quienes confirmaron su asistencia. Modalidad pago individual por consumo.
-                                        </p>
-                                        <? } ?>
 
                                     </td>
                                 </tr>
