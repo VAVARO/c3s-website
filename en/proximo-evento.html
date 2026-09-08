@@ -211,9 +211,10 @@
     </div>
 
     <!-- Event Details & Form Container -->
-    <div class="bg-white border border-outline-variant rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <!-- Event Details & Form Container -->
+    <div class="bg-white border border-outline-variant rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
-      <!-- Left Column: Details -->
+      <!-- Left Column: Details & Metadata -->
       <div class="lg:col-span-5 space-y-6">
         <div class="space-y-3">
           <h2 class="font-display-lg text-2xl md:text-4xl text-primary font-bold leading-tight">
@@ -221,11 +222,11 @@
           </h2>
         </div>
 
-        <p class="font-body-md text-on-surface-variant leading-relaxed">
+        <p class="font-body-md text-on-surface-variant leading-relaxed text-base">
           A conversation about Chile, the world, and the challenge of building trust in society, led by <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="underline decoration-primary hover:text-secondary transition-colors font-semibold">3xi</a>.
         </p>
         
-        <!-- Metadata Grid -->
+        <!-- Metadata List -->
         <div class="space-y-4 pt-4 border-t border-outline-variant">
           
           <!-- Date -->
@@ -316,6 +317,84 @@
             Confirm My Registration
           </button>
         </form>
+      </div>
+
+    </div>
+
+    <!-- Opening Presentation & Panel Discussion -->
+    <div class="mt-8 bg-white border border-outline-variant rounded-2xl p-8 md:p-12 shadow-sm space-y-8">
+      
+      <!-- Opening Presentation (Camilo Herrera) -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="h-2.5 w-2.5 rounded-full bg-primary inline-block"></span>
+          <span class="font-label-sm text-xs font-bold text-primary uppercase tracking-widest">Opening Presentation</span>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant rounded-xl border-l-4 border-l-primary flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="font-headline-md text-xl font-bold text-on-surface">Camilo Herrera</h3>
+            <p class="font-body-md text-sm text-on-surface-variant mt-0.5">Executive Director of <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="underline decoration-primary hover:text-secondary transition-colors font-semibold">3xi</a></p>
+          </div>
+          <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-secondary uppercase tracking-wider bg-white px-3.5 py-2 rounded-lg border border-outline-variant/60 w-fit">
+            Discover 3xi
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-outline-variant/50"></div>
+
+      <!-- Panel Discussion Guests -->
+      <div>
+        <div class="mb-6">
+          <span class="font-label-sm text-xs font-bold text-primary uppercase tracking-widest block mb-1">Panel Discussion</span>
+          <h3 class="font-headline-md text-lg md:text-xl font-bold text-on-surface">
+            To start the conversation, after Camilo's presentation, we have invited:
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Panelist 1: Silvia Díaz -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Silvia Díaz</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Scientist and academic, former Minister of Science and current President of the National CTCI Council.
+              </p>
+            </div>
+          </div>
+
+          <!-- Panelist 2: Pablo Bosch -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Pablo Bosch</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Business leader, co-founder of Las Majadas de Pirque; former President of Fundación Hogar de Cristo, Director of ICARE, and SOFOFA Councilor.
+              </p>
+            </div>
+          </div>
+
+          <!-- Panelist 3: Alejandra Pizarro -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Alejandra Pizarro</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                President of the Board of Comunidad de Organizaciones Solidarias (COS), network of over 200 civil society organizations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Panelist 4: Rodrigo Jordán -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Rodrigo Jordán</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Engineer, mountaineer, and President of Vertical; President of the Board of Fundación Superación de la Pobreza and former President of América Solidaria.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

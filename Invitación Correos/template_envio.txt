@@ -71,12 +71,16 @@
                     <tr>
                         <td style="padding: 32px 32px 20px 32px;">
 
-                            <p style="font-size: 16px; margin: 0 0 14px 0; color: #1b1c1c; font-family: 'Work Sans', Arial, sans-serif;">
+                            <p style="font-size: 16px; margin: 0 0 16px 0; color: #1b1c1c; font-family: 'Work Sans', Arial, sans-serif;">
                                 <?= tratamiento ?> <strong><?= nombre ?></strong>,
                             </p>
 
-                            <p style="font-size: 14px; line-height: 1.6; color: #404040; margin: 0 0 22px 0; font-family: 'Work Sans', Arial, sans-serif;">
-                                En septiembre retomamos los encuentros del Círculo Chileno de Capital Social (C3S), esta vez con un nuevo horario y locación. Pronto te iremos compartiendo los panelistas y el formato de esta edición. Por ahora, te invitamos a reservar la fecha para que no te lo pierdas; en los próximos días te contaremos todos los detalles.
+                            <p style="font-size: 14px; line-height: 1.6; color: #404040; margin: 0 0 16px 0; font-family: 'Work Sans', Arial, sans-serif;">
+                                Te escribo en representación del <strong>Círculo Chileno de Capital Social (C3S)</strong>, una comunidad de organizaciones comprometidas con fortalecer la confianza, la colaboración y los vínculos sociales en Chile.
+                            </p>
+
+                            <p style="font-size: 14.5px; line-height: 1.6; color: #404040; margin: 0 0 24px 0; font-family: 'Work Sans', Arial, sans-serif;">
+                                En esta ocasión, tengo el agrado de invitarte a nuestro próximo encuentro, donde contaremos con la participación de <strong style="font-size: 15.5px; color: #1b1c1c;">Camilo Herrera</strong>, director ejecutivo de <a href="https://3xi.cl/" target="_blank" style="color: #305ea2; text-decoration: underline; font-weight: 700; font-size: 15.5px;">3xi</a>, quien compartirá la experiencia de esta iniciativa y nos invitará a explorar el potencial transformador del encuentro. Más que ofrecer respuestas, buscamos abrir aquellas preguntas que todavía necesitamos formularnos para comprender nuestras diferencias, reconocer lo que nos une y a encontrarnos como sociedad.
                             </p>
 
                             <!-- Tarjeta de la Sesión -->
@@ -84,16 +88,62 @@
                                 <tr>
                                     <td style="padding: 24px;">
 
-                                        <h2 class="font-heading" style="margin: 0 0 8px 0; font-size: 20px; color: #770000; font-weight: 700; font-family: 'Be Vietnam Pro', Arial, sans-serif;">
+                                        <h2 class="font-heading" style="margin: 0 0 14px 0; font-size: 20px; color: #770000; font-weight: 700; font-family: 'Be Vietnam Pro', Arial, sans-serif;">
                                             3xi: El potencial del Encuentro
                                         </h2>
 
-                                        <p style="margin: 0 0 18px 0; font-size: 13px; line-height: 1.5; color: #5b403c; font-family: 'Work Sans', Arial, sans-serif;">
-                                            Una conversación sobre Chile, el mundo y el desafío de construir confianza en la sociedad, liderada por <a href="https://3xi.cl/" target="_blank" style="color: #305ea2; text-decoration: underline; font-weight: 600;">3xi</a>.
+                                        <!-- Presentación Inicial -->
+                                        <div style="margin: 0 0 18px 0; padding: 14px 18px; background-color: #ffffff; border: 1px solid #ecd8d4; border-radius: 8px; border-left: 4px solid #770000;">
+                                            <p style="margin: 0 0 4px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #770000; font-weight: 700; font-family: 'Work Sans', Arial, sans-serif;">
+                                                Presentación Inicial
+                                            </p>
+                                            <p style="margin: 0; font-size: 16px; font-weight: 700; color: #1b1c1c; font-family: 'Work Sans', Arial, sans-serif;">
+                                                Camilo Herrera
+                                            </p>
+                                            <p style="margin: 2px 0 0 0; font-size: 13.5px; color: #5b403c; font-family: 'Work Sans', Arial, sans-serif;">
+                                                Director Ejecutivo de <a href="https://3xi.cl/" target="_blank" style="color: #305ea2; text-decoration: underline; font-weight: 600;">3xi</a>
+                                            </p>
+                                        </div>
+
+                                        <p style="margin: 0 0 18px 0; font-size: 13px; line-height: 1.6; color: #5b403c; font-family: 'Work Sans', Arial, sans-serif;">
+                                            La invitación es a que te sientas parte de esta conversación: un espacio para desafiar preguntarnos qué nos falta para fortalecer y sostener los encuentros que necesita Chile, comprender qué barreras debemos atravesar y qué nuevas formas de relacionarnos pueden ayudarnos a construir un futuro común. Creemos que aprender a hacernos estas preguntas —con apertura, confianza y disposición a escuchar— es también una manera de comenzar a encontrarnos y desde ahí construir capital social.
                                         </p>
 
+                                        <!-- Panel de Conversación -->
+                                        <div style="margin: 20px 0; padding: 18px 20px; background-color: #ffffff; border: 1px solid #ecd8d4; border-radius: 10px;">
+                                            <p style="margin: 0 0 12px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #770000; font-weight: 700; font-family: 'Work Sans', Arial, sans-serif; line-height: 1.4;">
+                                                Para iniciar la conversación, después de la presentación de Camilo, hemos invitado a:
+                                            </p>
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-size: 12.5px; line-height: 1.5; color: #404040;">
+                                                <tr>
+                                                    <td style="padding-bottom: 12px; vertical-align: top;">
+                                                        <strong style="color: #1b1c1c; font-size: 13px;">Silvia Díaz:</strong>
+                                                        <span style="color: #5b403c;"> Científica y académica, exministra de Ciencia y actual presidenta del Consejo Nacional de CTCI.</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-bottom: 12px; vertical-align: top;">
+                                                        <strong style="color: #1b1c1c; font-size: 13px;">Pablo Bosch:</strong>
+                                                        <span style="color: #5b403c;"> Empresario, cofundador de Las Majadas de Pirque; fue presidente del Hogar de Cristo, director de ICARE y consejero de SOFOFA.</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-bottom: 12px; vertical-align: top;">
+                                                        <strong style="color: #1b1c1c; font-size: 13px;">Alejandra Pizarro:</strong>
+                                                        <span style="color: #5b403c;"> Presidenta del Directorio de la Comunidad de Organizaciones Solidarias (COS), red de más de 200 fundaciones de la sociedad civil.</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="vertical-align: top;">
+                                                        <strong style="color: #1b1c1c; font-size: 13px;">Rodrigo Jordán:</strong>
+                                                        <span style="color: #5b403c;"> Ingeniero, montañista y presidente de Vertical; presidente del directorio de Fundación Superación de la Pobreza y expresidente de América Solidaria.</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
                                         <!-- Detalles del Evento -->
-                                        <table border="0" cellpadding="5" cellspacing="0" width="100%" style="font-size: 13px; color: #1b1c1c; border-top: 1px solid #e4beb8; padding-top: 10px;">
+                                        <table border="0" cellpadding="5" cellspacing="0" width="100%" style="font-size: 13px; color: #1b1c1c; border-top: 1px solid #e4beb8; padding-top: 12px;">
                                             <tr>
                                                 <td width="90" style="color: #906f6a; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Fecha:</td>
                                                 <td style="font-weight: 600; color: #1b1c1c;">23 de septiembre</td>
@@ -124,11 +174,31 @@
                                 </tr>
                             </table>
 
+                            <!-- Cierre y Firma -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 26px 0 24px 0;">
+                                <tr>
+                                     <td style="font-family: 'Work Sans', Arial, sans-serif;">
+                                         <p style="font-size: 14px; line-height: 1.6; color: #404040; margin: 0 0 16px 0;">
+                                             Esperamos contar con tu valiosa presencia para construir juntos esta conversación.
+                                         </p>
+                                         <p style="font-size: 13.5px; color: #5b403c; margin: 0 0 4px 0;">
+                                             Saludos cordiales,
+                                         </p>
+                                         <p style="font-size: 15px; font-weight: 700; color: #1b1c1c; margin: 0 0 2px 0;">
+                                             Nancy Pérez
+                                         </p>
+                                         <p style="font-size: 13px; color: #770000; font-weight: 600; margin: 0;">
+                                             Coordinadora · Círculo Chileno de Capital Social (C3S)
+                                         </p>
+                                     </td>
+                                </tr>
+                            </table>
+
                             <!-- Botón Principal (CTA) -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 24px 0 10px 0;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 10px 0 10px 0;">
                                 <tr>
                                     <td align="center">
-                                        <a href="https://capitalsocialchile.cl/proximo-evento" target="_blank" style="background-color: #770000; color: #ffffff; display: inline-block; padding: 14px 34px; font-size: 15px; font-weight: 700; text-decoration: none; border-radius: 8px; font-family: 'Work Sans', Arial, sans-serif; letter-spacing: 0.3px;">
+                                        <a href="https://capitalsocialchile.cl/proximo-evento" target="_blank" style="background-color: #770000; color: #ffffff; display: inline-block; padding: 14px 36px; font-size: 15px; font-weight: 700; text-decoration: none; border-radius: 8px; font-family: 'Work Sans', Arial, sans-serif; letter-spacing: 0.3px;">
                                             Inscribirme al Encuentro
                                         </a>
                                     </td>

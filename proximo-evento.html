@@ -239,9 +239,10 @@
     </div>
 
     <!-- Event Details & Form Container -->
-    <div class="bg-white border border-outline-variant rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <!-- Event Details & Form Container -->
+    <div class="bg-white border border-outline-variant rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
-      <!-- Left Column: Details (Cleaned) -->
+      <!-- Left Column: Details & Metadata -->
       <div class="lg:col-span-5 space-y-6">
         <div class="space-y-3">
           <h2 class="font-display-lg text-2xl md:text-4xl text-primary font-bold leading-tight">
@@ -249,11 +250,11 @@
           </h2>
         </div>
 
-        <p class="font-body-md text-on-surface-variant leading-relaxed">
+        <p class="font-body-md text-on-surface-variant leading-relaxed text-base">
           Una conversación sobre Chile, el mundo y el desafío de construir confianza en la sociedad, liderada por <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="underline decoration-primary hover:text-secondary transition-colors font-semibold">3xi</a>.
         </p>
         
-        <!-- Metadata Grid -->
+        <!-- Punteo de Coordenadas -->
         <div class="space-y-4 pt-4 border-t border-outline-variant">
           
           <!-- Fecha -->
@@ -274,7 +275,7 @@
             </div>
           </div>
 
-          <!-- Lugar (Presencial Strict) -->
+          <!-- Lugar -->
           <div class="flex items-start gap-3 text-on-surface">
             <span class="material-symbols-outlined text-primary text-2xl mt-0.5">apartment</span>
             <div>
@@ -305,7 +306,7 @@
         </div>
       </div>
 
-      <!-- Right Column: Registration Form (Updated Inputs) -->
+      <!-- Right Column: Registration Form -->
       <div class="lg:col-span-7 bg-surface-container-low p-6 md:p-8 rounded-xl border border-outline-variant">
         <h3 class="font-headline-md text-headline-md text-primary mb-2">Inscríbete al Evento</h3>
         <p class="font-body-md text-on-surface-variant mb-6 text-sm">Completa tus datos para confirmar tu asistencia al próximo encuentro.</p>
@@ -344,6 +345,84 @@
             Confirmar mi Inscripción
           </button>
         </form>
+      </div>
+
+    </div>
+
+    <!-- Exposición Inicial y Panel de Conversación -->
+    <div class="mt-8 bg-white border border-outline-variant rounded-2xl p-8 md:p-12 shadow-sm space-y-8">
+      
+      <!-- Exposición Inicial (Camilo Herrera) -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="h-2.5 w-2.5 rounded-full bg-primary inline-block"></span>
+          <span class="font-label-sm text-xs font-bold text-primary uppercase tracking-widest">Exposición Inicial</span>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant rounded-xl border-l-4 border-l-primary flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="font-headline-md text-xl font-bold text-on-surface">Camilo Herrera</h3>
+            <p class="font-body-md text-sm text-on-surface-variant mt-0.5">Director Ejecutivo de <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="underline decoration-primary hover:text-secondary transition-colors font-semibold">3xi</a></p>
+          </div>
+          <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-secondary uppercase tracking-wider bg-white px-3.5 py-2 rounded-lg border border-outline-variant/60 w-fit">
+            Conocer 3xi
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-outline-variant/50"></div>
+
+      <!-- Invitados a la Conversación -->
+      <div>
+        <div class="mb-6">
+          <span class="font-label-sm text-xs font-bold text-primary uppercase tracking-widest block mb-1">Panel de Conversación</span>
+          <h3 class="font-headline-md text-lg md:text-xl font-bold text-on-surface">
+            Para iniciar la conversación, después de la presentación de Camilo, hemos invitado a:
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Panelista 1: Silvia Díaz -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Silvia Díaz</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Científica y académica, exministra de Ciencia y actual presidenta del Consejo Nacional de CTCI.
+              </p>
+            </div>
+          </div>
+
+          <!-- Panelista 2: Pablo Bosch -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Pablo Bosch</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Empresario, cofundador de Las Majadas de Pirque; fue presidente del Hogar de Cristo, director de ICARE y consejero de SOFOFA.
+              </p>
+            </div>
+          </div>
+
+          <!-- Panelista 3: Alejandra Pizarro -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Alejandra Pizarro</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Presidenta del Directorio de la Comunidad de Organizaciones Solidarias (COS), red de más de 200 fundaciones de la sociedad civil.
+              </p>
+            </div>
+          </div>
+
+          <!-- Panelista 4: Rodrigo Jordán -->
+          <div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-md text-base font-bold text-on-surface mb-1.5">Rodrigo Jordán</h4>
+              <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Ingeniero, montañista y presidente de Vertical; presidente del directorio de Fundación Superación de la Pobreza y expresidente de América Solidaria.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
