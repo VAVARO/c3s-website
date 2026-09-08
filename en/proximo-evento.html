@@ -138,19 +138,80 @@
             width: 80px;
             background-color: #770000;
         }
+        /* Floating Chrome (Apple Materials & Depth) */
+        .floating-nav {
+            background-color: rgba(252, 249, 248, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(228, 190, 184, 0.6);
+        }
+        /* Tap / Press Feedback (Physical Response) */
+        .btn-press {
+            transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), opacity 140ms ease-out;
+        }
+        .btn-press:active {
+            transform: scale(0.97);
+        }
+        /* Touch safety: isolate hover scaling to real pointers */
+        @media (hover: hover) and (pointer: fine) {
+            .hover-lift {
+                transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms ease-out;
+            }
+            .hover-lift:hover {
+                transform: scale(1.05);
+            }
+        }
+        /* Smooth Entry Animation */
+        .fade-scale-in {
+            animation: enterScale 260ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        @keyframes enterScale {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* Mobile Menu Drawer */
+        #mobile-menu {
+            transition: max-height 260ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease-out;
+        }
+        #mobile-menu.hidden-menu {
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        #mobile-menu.open-menu {
+            max-height: 360px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* Universal Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
 
 <!-- TopNavBar -->
-<nav class="bg-background border-b border-outline-variant sticky top-0 z-50">
+<nav class="floating-nav sticky top-0 z-50 transition-colors">
   <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
     <!-- Brand Logo -->
-    <a href="./" class="font-headline-md text-headline-md font-bold text-primary">C3S</a>
+    <a href="./" class="font-headline-md text-headline-md font-bold text-primary btn-press">C3S</a>
 
     <!-- Active Navigation Links -->
     <div class="hidden md:flex gap-8 items-center h-full">
-      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="proximo-evento">Upcoming Event</a>
+      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1 font-semibold" href="proximo-evento">Upcoming Event</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos">About Us</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="encuentros">Encounters</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="contacto">Contact</a>
@@ -175,10 +236,18 @@
         <span class="text-outline">|</span>
         <span class="text-primary font-bold">EN</span>
       </div>
-      <button class="text-primary">
-        <span class="material-symbols-outlined">menu</span>
+      <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" class="text-primary p-1.5 rounded-lg active:scale-95 transition-transform flex items-center justify-center">
+        <span id="mobile-menu-icon" class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="hidden-menu md:hidden border-t border-outline-variant/60 bg-[#fcf9f8]/95 backdrop-blur-md px-6 py-4 space-y-3">
+    <a class="block font-body-md text-base font-semibold text-primary py-2 px-3 rounded-lg bg-primary-fixed/40" href="proximo-evento">Upcoming Event</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="quienes-somos">About Us</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="encuentros">Encounters</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="contacto">Contact</a>
   </div>
 </nav>
 
@@ -288,32 +357,55 @@
         <iframe name="hidden_iframe_evento" id="hidden_iframe_evento" style="display:none;" onload="if(submittedEvento) { showEventoSuccess(); }"></iframe>
         <script>
           function showEventoSuccess() {
-            alert('Registration confirmed! We look forward to seeing you on September 23 at 18:30 hrs at Auditorio NIDO Lucía.');
+            document.getElementById('evento-form').classList.add('hidden');
+            document.getElementById('evento-success').classList.remove('hidden');
+          }
+          function resetEventoForm() {
             document.getElementById('evento-form').reset();
+            document.getElementById('evento-success').classList.add('hidden');
+            document.getElementById('evento-form').classList.remove('hidden');
+            submittedEvento = false;
           }
         </script>
+
+        <!-- Success Message Card (Inline continuity, replacing blocking alert) -->
+        <div id="evento-success" class="hidden bg-white border border-primary/20 rounded-xl p-8 text-center space-y-4 fade-scale-in shadow-sm">
+          <div class="w-14 h-14 bg-primary-fixed text-primary rounded-full flex items-center justify-center mx-auto">
+            <span class="material-symbols-outlined text-3xl">check_circle</span>
+          </div>
+          <h4 class="font-headline-md text-2xl font-bold text-primary">Registration Confirmed!</h4>
+          <p class="font-body-md text-sm text-on-surface-variant leading-relaxed max-w-md mx-auto">
+            Your spot is reserved. We look forward to seeing you on <strong>September 23 at 18:30 hrs</strong> at <strong>Auditorio NIDO Lucía</strong> (San Isidro 85, Santiago).
+          </p>
+          <div class="pt-3">
+            <button type="button" onclick="resetEventoForm()" class="btn-press inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-primary py-2 px-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-secondary cursor-pointer">
+              <span class="material-symbols-outlined text-base">person_add</span>
+              Register another person
+            </button>
+          </div>
+        </div>
 
         <form id="evento-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdYhzaYUOCda9rV9g7rHo_2RgVP_JeCMXskSlgWa1zMk9RNvg/formResponse" method="POST" target="hidden_iframe_evento" onsubmit="submittedEvento=true;" class="space-y-4">
           
           <!-- Full Name -->
           <div>
             <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="nombre-evento">Full Name <span class="text-primary">*</span></label>
-            <input id="nombre-evento" name="entry.213414172" required type="text" placeholder="Your full name" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <input id="nombre-evento" name="entry.213414172" required type="text" placeholder="Your full name" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 outline-none"/>
           </div>
 
           <!-- Email -->
           <div>
             <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="email-evento">Email Address <span class="text-primary">*</span></label>
-            <input id="email-evento" name="entry.2145342347" required type="email" placeholder="you@email.com" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <input id="email-evento" name="entry.2145342347" required type="email" placeholder="you@email.com" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 outline-none"/>
           </div>
 
           <!-- Organization (if applicable) -->
           <div>
             <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="org-evento">Organization <span class="text-on-surface-variant font-normal">(If applicable)</span></label>
-            <input id="org-evento" name="entry.1851145845" type="text" placeholder="Your organization, university, or company" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <input id="org-evento" name="entry.1851145845" type="text" placeholder="Your organization, university, or company" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 outline-none"/>
           </div>
 
-          <button type="submit" class="w-full bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer mt-2">
+          <button type="submit" class="w-full bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 btn-press cursor-pointer mt-2">
             Confirm My Registration
           </button>
         </form>
@@ -408,42 +500,42 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-y-10 gap-x-6 sm:gap-x-10 md:gap-x-14 items-center justify-items-center max-w-3xl mx-auto">
           <!-- Col 1, Row 1: 3xi -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="3xi">
+            <a href="https://3xi.cl/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="3xi">
               <img src="../logos/3xi.png?v=9" alt="3xi Logo" class="h-13 sm:h-14 md:h-15 max-w-[125px] w-auto object-contain"/>
             </a>
           </div>
 
           <!-- Col 2, Row 1: PISCT -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="http://www.carlosvignolo.com" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="Innovation and Sociotechnology Program (PISCT)">
+            <a href="http://www.carlosvignolo.com" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="Innovation and Sociotechnology Program (PISCT)">
               <img src="../logos/PISCT.png?v=9" alt="PISCT Universidad de Chile Logo" class="h-16 sm:h-18 md:h-20 max-w-[210px] w-auto object-contain"/>
             </a>
           </div>
 
           <!-- Col 3, Row 1: Balloon Latam -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://balloonlatam.com" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="Balloon Latam">
+            <a href="https://balloonlatam.com" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="Balloon Latam">
               <img src="../logos/balloonlatam.png?v=9" alt="Balloon Latam Logo" class="h-7 sm:h-8 md:h-9 max-w-[210px] w-auto object-contain"/>
             </a>
           </div>
 
           <!-- Col 1, Row 2: CBI -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://www.cbi.org" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="Consensus Building Institute (CBI)">
+            <a href="https://www.cbi.org" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="Consensus Building Institute (CBI)">
               <img src="../logos/cbi.png?v=9" alt="CBI Logo" class="h-11 sm:h-12 md:h-13 max-w-[160px] w-auto object-contain"/>
             </a>
           </div>
 
           <!-- Col 2, Row 2: Presencing Institute -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://www.presencing.org" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="Presencing Institute">
+            <a href="https://www.presencing.org" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="Presencing Institute">
               <img src="../logos/presencing.png?v=9" alt="Presencing Institute Logo" class="h-11 sm:h-12 md:h-13 max-w-[170px] w-auto object-contain"/>
             </a>
           </div>
 
           <!-- Col 3, Row 2: Camun -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://camun.org/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="Camun">
+            <a href="https://camun.org/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="Camun">
               <img src="../logos/camun.png?v=9" alt="Camun Logo" class="h-10 sm:h-11 md:h-12 max-w-[160px] w-auto object-contain"/>
             </a>
           </div>
@@ -458,19 +550,19 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 md:gap-14 items-center justify-items-center max-w-3xl mx-auto">
           <!-- 1. NIDO Lucía -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://www.nidolucia.cl/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="NIDO Lucía">
+            <a href="https://www.nidolucia.cl/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="NIDO Lucía">
               <img src="../logos/nido_lucia.png?v=9" alt="NIDO Lucía Logo" class="h-10 sm:h-11 md:h-12 max-w-[170px] w-auto object-contain"/>
             </a>
           </div>
           <!-- 2. Ámbar Chile -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://ambarchile.cl/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="Ámbar Chile">
+            <a href="https://ambarchile.cl/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="Ámbar Chile">
               <img src="../logos/Logo Ambar Chile Azul PNG.png?v=11" alt="Ámbar Chile Logo" class="h-14 sm:h-16 md:h-18 max-w-[130px] w-auto object-contain"/>
             </a>
           </div>
           <!-- 3. Minverso -->
           <div class="h-20 w-full flex items-center justify-center">
-            <a href="https://minverso.com/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center justify-center" title="Minverso">
+            <a href="https://minverso.com/" target="_blank" rel="noopener noreferrer" class="opacity-90 hover:opacity-100 transition-[opacity,transform] duration-200 ease-out hover-lift btn-press flex items-center justify-center" title="Minverso">
               <img src="../logos/Minverso-brand-horizontal1 (1).png?v=9" alt="Minverso Logo" class="h-12 sm:h-13 md:h-14 max-w-[160px] w-auto object-contain"/>
             </a>
           </div>
@@ -507,7 +599,7 @@
 <div class="space-y-6">
 <span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contact</span>
 <div class="flex gap-4">
-<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="contacto#contacto">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white btn-press transition-[background-color,color,border-color]" href="contacto#contacto">
 <span class="material-symbols-outlined text-[20px]">mail</span>
 </a>
 </div>
@@ -517,6 +609,50 @@
 </div>
 </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileMenu.classList.contains('open-menu');
+        if (isOpen) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        } else {
+          mobileMenu.classList.remove('hidden-menu');
+          mobileMenu.classList.add('open-menu');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          if (menuIcon) menuIcon.textContent = 'close';
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>

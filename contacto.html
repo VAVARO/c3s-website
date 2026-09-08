@@ -138,22 +138,83 @@
             width: 80px;
             background-color: #770000;
         }
+        /* Floating Chrome (Apple Materials & Depth) */
+        .floating-nav {
+            background-color: rgba(252, 249, 248, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(228, 190, 184, 0.6);
+        }
+        /* Tap / Press Feedback (Physical Response) */
+        .btn-press {
+            transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), opacity 140ms ease-out;
+        }
+        .btn-press:active {
+            transform: scale(0.97);
+        }
+        /* Touch safety: isolate hover scaling to real pointers */
+        @media (hover: hover) and (pointer: fine) {
+            .hover-lift {
+                transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms ease-out;
+            }
+            .hover-lift:hover {
+                transform: scale(1.03);
+            }
+        }
+        /* Smooth Entry Animation */
+        .fade-scale-in {
+            animation: enterScale 260ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        @keyframes enterScale {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* Mobile Menu Drawer */
+        #mobile-menu {
+            transition: max-height 260ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease-out;
+        }
+        #mobile-menu.hidden-menu {
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        #mobile-menu.open-menu {
+            max-height: 360px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* Universal Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
 
 <!-- TopNavBar -->
-<nav class="bg-background border-b border-outline-variant sticky top-0 z-50">
+<nav class="floating-nav sticky top-0 z-50 transition-colors">
   <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
     <!-- Brand Logo -->
-    <a href="./" class="font-headline-md text-headline-md font-bold text-primary">C3S</a>
+    <a href="./" class="font-headline-md text-headline-md font-bold text-primary btn-press">C3S</a>
 
     <!-- Active Navigation Links -->
     <div class="hidden md:flex gap-8 items-center h-full">
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="proximo-evento">Próximo Evento</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos">¿Quiénes somos?</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="encuentros">Encuentros</a>
-      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="contacto">Contacto</a>
+      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1 font-semibold" href="contacto">Contacto</a>
 
       <!-- Hidden Links (Commented for future use) -->
       <!-- <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="./">Inicio</a> -->
@@ -175,10 +236,18 @@
         <span class="text-outline">|</span>
         <a href="en/contacto" class="text-on-surface-variant hover:text-secondary transition-colors">EN</a>
       </div>
-      <button class="text-primary">
-        <span class="material-symbols-outlined">menu</span>
+      <button id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" class="text-primary p-1.5 rounded-lg active:scale-95 transition-transform flex items-center justify-center">
+        <span id="mobile-menu-icon" class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="hidden-menu md:hidden border-t border-outline-variant/60 bg-[#fcf9f8]/95 backdrop-blur-md px-6 py-4 space-y-3">
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="proximo-evento">Próximo Evento</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="quienes-somos">¿Quiénes somos?</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="encuentros">Encuentros</a>
+    <a class="block font-body-md text-base font-semibold text-primary py-2 px-3 rounded-lg bg-primary-fixed/40" href="contacto">Contacto</a>
   </div>
 </nav>
 
@@ -198,8 +267,22 @@
 <iframe name="hidden_iframe_contacto" id="hidden_iframe_contacto" style="display:none;" onload="if(submittedContacto) { showContactoSuccess(); }"></iframe>
 <script>
   function showContactoSuccess() {
-    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo a la brevedad.');
-    document.getElementById('contacto-form').reset();
+    const form = document.getElementById('contacto-form');
+    const successCard = document.getElementById('contacto-success');
+    if (form && successCard) {
+      form.classList.add('hidden');
+      successCard.classList.remove('hidden');
+    }
+  }
+  function resetContactoForm() {
+    const form = document.getElementById('contacto-form');
+    const successCard = document.getElementById('contacto-success');
+    if (form && successCard) {
+      form.reset();
+      submittedContacto = false;
+      form.classList.remove('hidden');
+      successCard.classList.add('hidden');
+    }
   }
 </script>
 
@@ -213,30 +296,44 @@
     ¿Tienes preguntas, quieres proponer una colaboración o solicitar información específica? Escríbenos directamente.
   </p>
 
+  <!-- Inline Success Card for Contact Form -->
+  <div id="contacto-success" class="hidden fade-scale-in p-8 rounded-xl bg-surface-container-low border border-outline-variant text-center space-y-4 my-4">
+    <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
+      <span class="material-symbols-outlined text-3xl">mark_email_read</span>
+    </div>
+    <h3 class="font-headline-lg text-2xl text-primary font-bold">¡Mensaje Enviado con Éxito!</h3>
+    <p class="font-body-md text-on-surface-variant max-w-md mx-auto leading-relaxed">
+      Gracias por contactar con el C3S. Nuestro equipo institucional revisará tu consulta y nos comunicaremos contigo a la brevedad.
+    </p>
+    <button type="button" onclick="resetContactoForm()" class="mt-4 px-6 py-2.5 rounded-lg border border-outline-variant text-primary font-semibold hover:bg-white btn-press transition-colors text-sm cursor-pointer">
+      Enviar otro mensaje
+    </button>
+  </div>
+
   <form id="contacto-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf-bX4j4X76c4sD5eQ-BN-k_Q07lSLLghfCxcVBnJEKgv5ZvQ/formResponse" method="POST" target="hidden_iframe_contacto" onsubmit="submittedContacto=true;" class="space-y-6">
     
     <!-- Nombre -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="nombre-contacto">Nombre Completo</label>
-      <input id="nombre-contacto" name="entry.1360843518" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+      <input id="nombre-contacto" name="entry.1360843518" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-[border-color,box-shadow,background-color] duration-150 ease-out outline-none"/>
     </div>
 
     <!-- Correo -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="email-contacto">Correo Electrónico</label>
-      <input id="email-contacto" name="entry.1733250446" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+      <input id="email-contacto" name="entry.1733250446" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-[border-color,box-shadow,background-color] duration-150 ease-out outline-none"/>
     </div>
 
     <!-- Organización -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="org-contacto">Organización / Institución <span class="text-on-surface-variant font-normal">(Opcional)</span></label>
-      <input id="org-contacto" name="entry.2140630190" type="text" placeholder="Nombre de tu institución u organización" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none"/>
+      <input id="org-contacto" name="entry.2140630190" type="text" placeholder="Nombre de tu institución u organización" class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-[border-color,box-shadow,background-color] duration-150 ease-out outline-none"/>
     </div>
 
     <!-- Motivo de Contacto -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="motivo-contacto">Motivo de Contacto</label>
-      <select id="motivo-contacto" name="entry.765317427" required class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none">
+      <select id="motivo-contacto" name="entry.765317427" required class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-[border-color,box-shadow,background-color] duration-150 ease-out outline-none">
         <option value="Información General">Información General</option>
         <option value="Propuesta de Colaboración">Propuesta de Colaboración</option>
         <option value="Prensa y Difusión">Prensa y Difusión</option>
@@ -247,21 +344,35 @@
     <!-- Mensaje -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-surface mb-2" for="mensaje-contacto">Mensaje</label>
-      <textarea id="mensaje-contacto" name="entry.601144988" required rows="5" placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-all outline-none resize-none"></textarea>
+      <textarea id="mensaje-contacto" name="entry.601144988" required rows="5" placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-low focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface transition-[border-color,box-shadow,background-color] duration-150 ease-out outline-none resize-none"></textarea>
     </div>
 
-    <button type="submit" class="w-full sm:w-auto bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer">
+    <button type="submit" class="w-full sm:w-auto bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 btn-press transition-opacity cursor-pointer">
       Enviar Mensaje
     </button>
   </form>
 </section>
 
-<script>var submitted = false;</script>
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showMailingSuccess(); }"></iframe>
+<script>var submittedMailing = false;</script>
+<iframe name="hidden_iframe_mailing" id="hidden_iframe_mailing" style="display:none;" onload="if(submittedMailing) { showMailingSuccess(); }"></iframe>
 <script>
   function showMailingSuccess() {
-    alert('¡Gracias por sumarte a la Red de Capital Social! Tus datos han sido registrados con éxito.');
-    document.getElementById('mailing-form').reset();
+    const form = document.getElementById('mailing-form');
+    const successCard = document.getElementById('mailing-success');
+    if (form && successCard) {
+      form.classList.add('hidden');
+      successCard.classList.remove('hidden');
+    }
+  }
+  function resetMailingForm() {
+    const form = document.getElementById('mailing-form');
+    const successCard = document.getElementById('mailing-success');
+    if (form && successCard) {
+      form.reset();
+      submittedMailing = false;
+      form.classList.remove('hidden');
+      successCard.classList.add('hidden');
+    }
   }
 </script>
 
@@ -275,39 +386,53 @@
     Recibe invitaciones exclusivas a nuestros próximos encuentros, conversatorios y boletines mensuales.
   </p>
 
-  <form id="mailing-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfVF16roYVJJAeWk3171e7s1BFISfbe5zrTJSWJSV_LpoLGjw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="space-y-6">
+  <!-- Inline Success Card for Mailing Form -->
+  <div id="mailing-success" class="hidden fade-scale-in p-8 rounded-xl bg-white/10 border border-white/20 text-center space-y-4 my-4">
+    <div class="w-14 h-14 rounded-full bg-white/20 text-white flex items-center justify-center mx-auto">
+      <span class="material-symbols-outlined text-3xl">how_to_reg</span>
+    </div>
+    <h3 class="font-headline-lg text-2xl text-white font-bold">¡Te has unido con éxito!</h3>
+    <p class="font-body-md text-white/90 max-w-md mx-auto leading-relaxed">
+      Tus datos han sido registrados en la Red de Capital Social del C3S. Recibirás invitaciones exclusivas a nuestros próximos ciclos de diálogo y boletines.
+    </p>
+    <button type="button" onclick="resetMailingForm()" class="mt-4 px-6 py-2.5 rounded-lg border border-white/30 text-white font-semibold hover:bg-white/20 btn-press transition-colors text-sm cursor-pointer">
+      Registrar otro correo
+    </button>
+  </div>
+
+  <form id="mailing-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfVF16roYVJJAeWk3171e7s1BFISfbe5zrTJSWJSV_LpoLGjw/formResponse" method="POST" target="hidden_iframe_mailing" onsubmit="submittedMailing=true;" class="space-y-6">
     
     <!-- Nombre -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="nombre-mailing">Nombre Completo</label>
-      <input id="nombre-mailing" name="entry.112852596" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      <input id="nombre-mailing" name="entry.112852596" required type="text" placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-[border-color,box-shadow,background-color,color] duration-150 ease-out outline-none"/>
     </div>
 
     <!-- Correo -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="email-mailing">Correo Electrónico</label>
-      <input id="email-mailing" name="entry.2104777613" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      <input id="email-mailing" name="entry.2104777613" required type="email" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-[border-color,box-shadow,background-color,color] duration-150 ease-out outline-none"/>
     </div>
 
     <!-- País y Ciudad o Localidad (Grid 2 columnas en desktop) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
         <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="pais-mailing">País de procedencia</label>
-        <input id="pais-mailing" name="entry.221556986" required type="text" placeholder="Ej: Chile, Argentina, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+        <input id="pais-mailing" name="entry.221556986" required type="text" placeholder="Ej: Chile, Argentina, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-[border-color,box-shadow,background-color,color] duration-150 ease-out outline-none"/>
       </div>
       <div>
         <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="ciudad-mailing">Ciudad o Localidad</label>
-        <input id="ciudad-mailing" name="entry.1395423488" required type="text" placeholder="Ej: Santiago, Coyhaique, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+        <input id="ciudad-mailing" name="entry.1395423488" required type="text" placeholder="Ej: Santiago, Coyhaique, etc." class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-[border-color,box-shadow,background-color,color] duration-150 ease-out outline-none"/>
       </div>
     </div>
 
     <!-- Organización -->
     <div>
       <label class="block font-label-md text-sm font-semibold text-on-secondary mb-2" for="org-mailing">Organización / Institución <span class="text-white/70 font-normal">(Opcional)</span></label>
-      <input id="org-mailing" name="entry.91443577" type="text" placeholder="Nombre de tu organización, universidad o empresa" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-all outline-none"/>
+      <input id="org-mailing" name="entry.91443577" type="text" placeholder="Nombre de tu organización, universidad o empresa" class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/60 focus:bg-white focus:text-on-surface focus:border-white focus:ring-2 focus:ring-white/40 transition-[border-color,box-shadow,background-color,color] duration-150 ease-out outline-none"/>
     </div>
 
-    <button type="submit" class="w-full sm:w-auto bg-white text-secondary font-bold px-8 py-3 rounded-lg hover:bg-secondary-fixed active:scale-95 transition-all cursor-pointer">
+    <button type="submit" class="w-full sm:w-auto bg-white text-secondary font-bold px-8 py-3 rounded-lg hover:bg-secondary-fixed btn-press transition-[background-color,color] cursor-pointer">
       Unirse al Mailing List
     </button>
   </form>
@@ -342,7 +467,7 @@
 <div class="space-y-6">
 <span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contacto</span>
 <div class="flex gap-4">
-<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="contacto#contacto">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white btn-press transition-[background-color,color,border-color]" href="contacto#contacto">
 <span class="material-symbols-outlined text-[20px]">mail</span>
 </a>
 </div>
@@ -353,5 +478,48 @@
 </div>
 </footer>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileMenu.classList.contains('open-menu');
+        if (isOpen) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        } else {
+          mobileMenu.classList.remove('hidden-menu');
+          mobileMenu.classList.add('open-menu');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          if (menuIcon) menuIcon.textContent = 'close';
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>

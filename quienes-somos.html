@@ -137,19 +137,67 @@
             width: 80px;
             background-color: #770000;
         }
+        /* Floating Chrome (Apple Materials & Depth) */
+        .floating-nav {
+            background-color: rgba(252, 249, 248, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(228, 190, 184, 0.6);
+        }
+        /* Tap / Press Feedback (Physical Response) */
+        .btn-press {
+            transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), opacity 140ms ease-out;
+        }
+        .btn-press:active {
+            transform: scale(0.97);
+        }
+        /* Touch safety: isolate hover scaling to real pointers */
+        @media (hover: hover) and (pointer: fine) {
+            .hover-lift {
+                transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms ease-out;
+            }
+            .hover-lift:hover {
+                transform: scale(1.05);
+            }
+        }
+        /* Mobile Menu Drawer */
+        #mobile-menu {
+            transition: max-height 260ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease-out;
+        }
+        #mobile-menu.hidden-menu {
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        #mobile-menu.open-menu {
+            max-height: 360px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* Universal Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+
 <!-- TopNavBar -->
-<nav class="bg-background border-b border-outline-variant sticky top-0 z-50">
+<nav class="floating-nav sticky top-0 z-50 transition-colors">
   <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
     <!-- Brand Logo -->
-    <a href="./" class="font-headline-md text-headline-md font-bold text-primary">C3S</a>
+    <a href="./" class="font-headline-md text-headline-md font-bold text-primary btn-press">C3S</a>
 
     <!-- Active Navigation Links -->
     <div class="hidden md:flex gap-8 items-center h-full">
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="proximo-evento">Próximo Evento</a>
-      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="quienes-somos">¿Quiénes somos?</a>
+      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1 font-semibold" href="quienes-somos">¿Quiénes somos?</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="encuentros">Encuentros</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="contacto">Contacto</a>
 
@@ -173,10 +221,18 @@
         <span class="text-outline">|</span>
         <a href="en/quienes-somos" class="text-on-surface-variant hover:text-secondary transition-colors">EN</a>
       </div>
-      <button class="text-primary">
-        <span class="material-symbols-outlined">menu</span>
+      <button id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" class="text-primary p-1.5 rounded-lg active:scale-95 transition-transform flex items-center justify-center">
+        <span id="mobile-menu-icon" class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="hidden-menu md:hidden border-t border-outline-variant/60 bg-[#fcf9f8]/95 backdrop-blur-md px-6 py-4 space-y-3">
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="proximo-evento">Próximo Evento</a>
+    <a class="block font-body-md text-base font-semibold text-primary py-2 px-3 rounded-lg bg-primary-fixed/40" href="quienes-somos">¿Quiénes somos?</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="encuentros">Encuentros</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="contacto">Contacto</a>
   </div>
 </nav>
 
@@ -201,10 +257,10 @@
 <!-- Top Row: 4 Members -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 <!-- 1. Álvaro Contreras -->
-<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-all duration-300 shadow-sm">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-[border-color,box-shadow] duration-200 ease-out shadow-sm">
 <div>
 <div class="w-full h-80 rounded-xl overflow-hidden mb-5 border border-outline-variant/60 bg-surface-container-low">
-<img alt="Álvaro Contreras" class="w-full h-full object-cover object-[center_20%] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/acontreras.jpg"/>
+<img alt="Álvaro Contreras" class="w-full h-full object-cover object-[center_20%] grayscale transition-[filter,transform] duration-300 ease-out group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/acontreras.jpg"/>
 </div>
 <div class="min-h-[52px] flex items-end mb-2">
 <h3 class="font-headline-md text-headline-md text-primary leading-tight">Álvaro Contreras</h3>
@@ -213,17 +269,17 @@
     Investigador Asociado <a href="https://www.carlosvignolo.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">Programa de Innovación y Sociotecnología</a>
 </p>
 </div>
-<a class="inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://www.linkedin.com/in/%C3%A1lvaro-contreras-barrios/" rel="noopener noreferrer" target="_blank">
+<a class="btn-press inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://www.linkedin.com/in/%C3%A1lvaro-contreras-barrios/" rel="noopener noreferrer" target="_blank">
 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"></path></svg>
 <span>Ver LinkedIn</span>
 </a>
 </div>
 
 <!-- 2. Juan Ignacio Cordero -->
-<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-all duration-300 shadow-sm">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-[border-color,box-shadow] duration-200 ease-out shadow-sm">
 <div>
 <div class="w-full h-80 rounded-xl overflow-hidden mb-5 border border-outline-variant/60 bg-surface-container-low">
-<img alt="Juan Ignacio Cordero" class="w-full h-full object-cover object-[center_20%] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/jcordero.png"/>
+<img alt="Juan Ignacio Cordero" class="w-full h-full object-cover object-[center_20%] grayscale transition-[filter,transform] duration-300 ease-out group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/jcordero.png"/>
 </div>
 <div class="min-h-[52px] flex items-end mb-2">
 <h3 class="font-headline-md text-headline-md text-primary leading-tight">Juan Ignacio Cordero</h3>
@@ -232,17 +288,17 @@
     Subdirector de Asuntos Públicos e Incidencia de <a href="https://balloonlatam.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">Balloon Latam</a>
 </p>
 </div>
-<a class="inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/juan-ignacio-cordero-p%C3%A9rez-3b048138" rel="noopener noreferrer" target="_blank">
+<a class="btn-press inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/juan-ignacio-cordero-p%C3%A9rez-3b048138" rel="noopener noreferrer" target="_blank">
 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"></path></svg>
 <span>Ver LinkedIn</span>
 </a>
 </div>
 
 <!-- 3. Melanie Gárate -->
-<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-all duration-300 shadow-sm">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-[border-color,box-shadow] duration-200 ease-out shadow-sm">
 <div>
 <div class="w-full h-80 rounded-xl overflow-hidden mb-5 border border-outline-variant/60 bg-surface-container-low">
-<img alt="Melanie Gárate" class="w-full h-full object-cover object-[center_20%] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/mgarate.png"/>
+<img alt="Melanie Gárate" class="w-full h-full object-cover object-[center_20%] grayscale transition-[filter,transform] duration-300 ease-out group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/mgarate.png"/>
 </div>
 <div class="min-h-[52px] flex items-end mb-2">
 <h3 class="font-headline-md text-headline-md text-primary leading-tight">Melanie Gárate</h3>
@@ -251,17 +307,17 @@
     Senior Associate en el <a href="https://cbi.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">Consensus Building Institute</a>
 </p>
 </div>
-<a class="inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://www.linkedin.com/in/melanie-garate/" rel="noopener noreferrer" target="_blank">
+<a class="btn-press inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://www.linkedin.com/in/melanie-garate/" rel="noopener noreferrer" target="_blank">
 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"></path></svg>
 <span>Ver LinkedIn</span>
 </a>
 </div>
 
 <!-- 4. Sebastián Jung -->
-<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-all duration-300 shadow-sm">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-[border-color,box-shadow] duration-200 ease-out shadow-sm">
 <div>
 <div class="w-full h-80 rounded-xl overflow-hidden mb-5 border border-outline-variant/60 bg-surface-container-low">
-<img alt="Sebastián Jung" class="w-full h-full object-cover object-[center_20%] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/sjung.png"/>
+<img alt="Sebastián Jung" class="w-full h-full object-cover object-[center_20%] grayscale transition-[filter,transform] duration-300 ease-out group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/sjung.png"/>
 </div>
 <div class="min-h-[52px] flex items-end mb-2">
 <h3 class="font-headline-md text-headline-md text-primary leading-tight">Sebastián Jung</h3>
@@ -270,7 +326,7 @@
     Líder de Research & Development en <a href="https://www.presencing.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">Presencing Institute</a>
 </p>
 </div>
-<a class="inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/sebastian-jung-3684681a1" rel="noopener noreferrer" target="_blank">
+<a class="btn-press inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/sebastian-jung-3684681a1" rel="noopener noreferrer" target="_blank">
 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"></path></svg>
 <span>Ver LinkedIn</span>
 </a>
@@ -280,10 +336,10 @@
 <!-- Bottom Row: 3 Members Centered -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:max-w-[894px] mx-auto w-full">
 <!-- 5. Nancy Pérez -->
-<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-all duration-300 shadow-sm">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-[border-color,box-shadow] duration-200 ease-out shadow-sm">
 <div>
 <div class="w-full h-80 rounded-xl overflow-hidden mb-5 border border-outline-variant/60 bg-surface-container-low">
-<img alt="Nancy Pérez" class="w-full h-full object-cover object-[center_20%] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/nperez.png"/>
+<img alt="Nancy Pérez" class="w-full h-full object-cover object-[center_20%] grayscale transition-[filter,transform] duration-300 ease-out group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/nperez.png"/>
 </div>
 <div class="min-h-[52px] flex items-end mb-2">
 <h3 class="font-headline-md text-headline-md text-primary leading-tight">Nancy Pérez</h3>
@@ -292,17 +348,17 @@
     Consultora en Transformación Digital; Consejera Superior <a href="https://usm.cl" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">Universidad Técnica Federico Santa María</a>
 </p>
 </div>
-<a class="inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/nancy-p%C3%A9rez-ojeda" rel="noopener noreferrer" target="_blank">
+<a class="btn-press inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/nancy-p%C3%A9rez-ojeda" rel="noopener noreferrer" target="_blank">
 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"></path></svg>
 <span>Ver LinkedIn</span>
 </a>
 </div>
 
 <!-- 6. Dulce Subida -->
-<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-all duration-300 shadow-sm">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-[border-color,box-shadow] duration-200 ease-out shadow-sm">
 <div>
 <div class="w-full h-80 rounded-xl overflow-hidden mb-5 border border-outline-variant/60 bg-surface-container-low">
-<img alt="Dulce Subida" class="w-full h-full object-cover object-[center_20%] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/dulce_new.jpeg"/>
+<img alt="Dulce Subida" class="w-full h-full object-cover object-[center_20%] grayscale transition-[filter,transform] duration-300 ease-out group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/dulce_new.jpeg"/>
 </div>
 <div class="min-h-[52px] flex items-end mb-2">
 <h3 class="font-headline-md text-headline-md text-primary leading-tight">Dulce Subida</h3>
@@ -311,17 +367,17 @@
     Investigadora y consultora en transformación organizacional inspirada en ecología y sistemas vivos; co-fundadora y articuladora general en <a href="https://camun.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">Camun</a>.
 </p>
 </div>
-<a class="inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/mariadulcesubida" rel="noopener noreferrer" target="_blank">
+<a class="btn-press inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/mariadulcesubida" rel="noopener noreferrer" target="_blank">
 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"></path></svg>
 <span>Ver LinkedIn</span>
 </a>
 </div>
 
 <!-- 7. Carlos Vignolo -->
-<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-all duration-300 shadow-sm">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-between group hover:border-primary transition-[border-color,box-shadow] duration-200 ease-out shadow-sm">
 <div>
 <div class="w-full h-80 rounded-xl overflow-hidden mb-5 border border-outline-variant/60 bg-surface-container-low">
-<img alt="Carlos Vignolo" class="w-full h-full object-cover object-[center_20%] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/cvignolo.jpg"/>
+<img alt="Carlos Vignolo" class="w-full h-full object-cover object-[center_20%] grayscale transition-[filter,transform] duration-300 ease-out group-hover:grayscale-0 group-hover:scale-105" src="./TEAM_PHOTOS/cvignolo.jpg"/>
 </div>
 <div class="min-h-[52px] flex items-end mb-2">
 <h3 class="font-headline-md text-headline-md text-primary leading-tight">Carlos Vignolo</h3>
@@ -330,7 +386,7 @@
     Director en <a href="https://www.carlosvignolo.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">Programa de Innovación y Sociotecnología</a>; Académico Ingeniería Industrial, U. de Chile.
 </p>
 </div>
-<a class="inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/carlosvignolo/es" rel="noopener noreferrer" target="_blank">
+<a class="btn-press inline-flex items-center gap-2 text-label-sm font-semibold text-secondary hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-surface-container-low border border-outline-variant hover:border-secondary w-fit" href="https://cl.linkedin.com/in/carlosvignolo/es" rel="noopener noreferrer" target="_blank">
 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"></path></svg>
 <span>Ver LinkedIn</span>
 </a>
@@ -366,7 +422,7 @@
 <div class="space-y-6">
 <span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contacto</span>
 <div class="flex gap-4">
-<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="contacto#contacto">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white btn-press transition-[background-color,color,border-color]" href="contacto#contacto">
 <span class="material-symbols-outlined text-[20px]">mail</span>
 </a>
 </div>
@@ -376,4 +432,49 @@
 </div>
 </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileMenu.classList.contains('open-menu');
+        if (isOpen) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        } else {
+          mobileMenu.classList.remove('hidden-menu');
+          mobileMenu.classList.add('open-menu');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          if (menuIcon) menuIcon.textContent = 'close';
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+    }
+  });
+</script>
+
 </body></html>

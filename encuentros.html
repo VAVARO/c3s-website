@@ -137,29 +137,111 @@
             width: 80px;
             background-color: #770000;
         }
+        /* Floating Chrome (Apple Materials & Depth) */
+        .floating-nav {
+            background-color: rgba(252, 249, 248, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(228, 190, 184, 0.6);
+        }
+        /* Tap / Press Feedback (Physical Response) */
+        .btn-press {
+            transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), opacity 140ms ease-out;
+        }
+        .btn-press:active {
+            transform: scale(0.97);
+        }
+        /* Touch safety: isolate hover scaling to real pointers */
+        @media (hover: hover) and (pointer: fine) {
+            .hover-lift {
+                transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms ease-out;
+            }
+            .hover-lift:hover {
+                transform: scale(1.03);
+            }
+        }
+        /* Smooth Entry Animation */
+        .fade-scale-in {
+            animation: enterScale 260ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        @keyframes enterScale {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* Mobile Menu Drawer */
+        #mobile-menu {
+            transition: max-height 260ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease-out;
+        }
+        #mobile-menu.hidden-menu {
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        #mobile-menu.open-menu {
+            max-height: 360px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* Synchronized SVG Line and Area Animation */
         @keyframes drawLine {
             from { stroke-dashoffset: 700; }
             to { stroke-dashoffset: 0; }
         }
+        @keyframes chartAreaReveal {
+            from { clip-path: inset(0 100% 0 0); }
+            to { clip-path: inset(0 0 0 0); }
+        }
         .animated-line {
             stroke-dasharray: 700;
             stroke-dashoffset: 700;
-            animation: drawLine 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: drawLine 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        .animated-area {
+            animation: chartAreaReveal 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        /* GPU-accelerated SVG Chart Node hover */
+        .chart-node circle {
+            transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), fill 180ms ease-out;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+        .chart-node:hover circle {
+            transform: scale(1.35);
+            fill: #305ea2;
+        }
+        .chart-node:hover rect {
+            fill: #305ea2;
+        }
+        /* Universal Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- TopNavBar -->
-<nav class="bg-background border-b border-outline-variant sticky top-0 z-50">
+<nav class="floating-nav sticky top-0 z-50 transition-colors">
   <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
     <!-- Brand Logo -->
-    <a href="./" class="font-headline-md text-headline-md font-bold text-primary">C3S</a>
+    <a href="./" class="font-headline-md text-headline-md font-bold text-primary btn-press">C3S</a>
 
     <!-- Active Navigation Links -->
     <div class="hidden md:flex gap-8 items-center h-full">
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="proximo-evento">Próximo Evento</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos">¿Quiénes somos?</a>
-      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1" href="encuentros">Encuentros</a>
+      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1 font-semibold" href="encuentros">Encuentros</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="contacto">Contacto</a>
 
       <!-- Hidden Links (Commented for future use) -->
@@ -182,10 +264,18 @@
         <span class="text-outline">|</span>
         <a href="en/encuentros" class="text-on-surface-variant hover:text-secondary transition-colors">EN</a>
       </div>
-      <button class="text-primary">
-        <span class="material-symbols-outlined">menu</span>
+      <button id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" class="text-primary p-1.5 rounded-lg active:scale-95 transition-transform flex items-center justify-center">
+        <span id="mobile-menu-icon" class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="hidden-menu md:hidden border-t border-outline-variant/60 bg-[#fcf9f8]/95 backdrop-blur-md px-6 py-4 space-y-3">
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="proximo-evento">Próximo Evento</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="quienes-somos">¿Quiénes somos?</a>
+    <a class="block font-body-md text-base font-semibold text-primary py-2 px-3 rounded-lg bg-primary-fixed/40" href="encuentros">Encuentros</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="contacto">Contacto</a>
   </div>
 </nav>
 
@@ -369,48 +459,48 @@
 <text class="text-xs font-bold fill-secondary uppercase tracking-wider" transform="rotate(-90)" x="-155" y="16">Nota</text>
 
 <!-- Area Fill Under Line -->
-<path d="M 60 115 L 160 115 L 260 145 L 360 160 L 460 85 L 460 270 L 60 270 Z" fill="url(#areaGrad)"></path>
+<path class="animated-area" d="M 60 115 L 160 115 L 260 145 L 360 160 L 460 85 L 460 270 L 60 270 Z" fill="url(#areaGrad)"></path>
 
 <!-- Smooth Animated Line Path -->
 <path class="animated-line" d="M 60 115 L 160 115 L 260 145 L 360 160 L 460 85" fill="none" stroke="url(#lineGrad)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
 
 <!-- Data Nodes & Score Badges -->
 <!-- 2do: 6.5 (x=60, y=115) -->
-<g class="group/node cursor-pointer">
-<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="60" cy="115" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
-<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="40" y="82"></rect>
+<g class="group/node cursor-pointer chart-node">
+<circle class="transition-all duration-300 transform" cx="60" cy="115" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 transition-colors" fill="#770000" height="22" rx="4" width="40" x="40" y="82"></rect>
 <text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="60" y="97">6.5</text>
 <text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="60" y="292">2do</text>
 </g>
 
 <!-- 3er: 6.5 (x=160, y=115) -->
-<g class="group/node cursor-pointer">
-<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="160" cy="115" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
-<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="140" y="82"></rect>
+<g class="group/node cursor-pointer chart-node">
+<circle class="transition-all duration-300 transform" cx="160" cy="115" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 transition-colors" fill="#770000" height="22" rx="4" width="40" x="140" y="82"></rect>
 <text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="160" y="97">6.5</text>
 <text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="160" y="292">3er</text>
 </g>
 
 <!-- 4to: 6.3 (x=260, y=145) -->
-<g class="group/node cursor-pointer">
-<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="260" cy="145" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
-<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="240" y="112"></rect>
+<g class="group/node cursor-pointer chart-node">
+<circle class="transition-all duration-300 transform" cx="260" cy="145" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 transition-colors" fill="#770000" height="22" rx="4" width="40" x="240" y="112"></rect>
 <text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="260" y="127">6.3</text>
 <text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="260" y="292">4to</text>
 </g>
 
 <!-- 5to: 6.2 (x=360, y=160) -->
-<g class="group/node cursor-pointer">
-<circle class="transition-all duration-300 transform group-hover/node:r-8 group-hover/node:fill-secondary" cx="360" cy="160" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
-<rect class="opacity-95 group-hover/node:fill-secondary transition-colors" fill="#770000" height="22" rx="4" width="40" x="340" y="127"></rect>
+<g class="group/node cursor-pointer chart-node">
+<circle class="transition-all duration-300 transform" cx="360" cy="160" fill="#770000" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="opacity-95 transition-colors" fill="#770000" height="22" rx="4" width="40" x="340" y="127"></rect>
 <text class="text-xs font-bold" fill="#ffffff" text-anchor="middle" x="360" y="142">6.2</text>
 <text class="text-sm font-semibold fill-on-surface" text-anchor="middle" x="360" y="292">5to</text>
 </g>
 
 <!-- 6to: 6.7 (x=460, y=85) -->
-<g class="group/node cursor-pointer">
-<circle class="transition-all duration-300 transform group-hover/node:r-9 group-hover/node:fill-secondary" cx="460" cy="85" fill="#a20101" r="7" stroke="#ffffff" stroke-width="2.5"></circle>
-<rect class="group-hover/node:fill-secondary transition-colors" fill="#a20101" height="22" rx="4" width="40" x="440" y="52"></rect>
+<g class="group/node cursor-pointer chart-node">
+<circle class="transition-all duration-300 transform" cx="460" cy="85" fill="#a20101" r="7" stroke="#ffffff" stroke-width="2.5"></circle>
+<rect class="transition-colors" fill="#a20101" height="22" rx="4" width="40" x="440" y="52"></rect>
 <text class="text-xs font-extrabold" fill="#ffffff" text-anchor="middle" x="460" y="67">6.7</text>
 <text class="text-sm font-bold fill-primary" text-anchor="middle" x="460" y="292">6to</text>
 </g>
@@ -434,7 +524,7 @@
 <!-- NATIVE HTML PROGRESS BARS WITH HOVER INTERACTIVITY -->
 <div class="space-y-3.5 my-auto">
 <!-- 1. Entusiasmo: 16.30% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">1. Entusiasmo</span>
 <span class="font-bold text-primary">16.30%</span>
@@ -445,7 +535,7 @@
 </div>
 
 <!-- 2. Interés: 14.40% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">2. Interés</span>
 <span class="font-bold text-primary">14.40%</span>
@@ -456,7 +546,7 @@
 </div>
 
 <!-- 3. Agradecimiento: 13.60% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">3. Agradecimiento</span>
 <span class="font-bold text-primary">13.60%</span>
@@ -467,7 +557,7 @@
 </div>
 
 <!-- 4. Esperanza: 9.90% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">4. Esperanza</span>
 <span class="font-bold text-primary">9.90%</span>
@@ -478,7 +568,7 @@
 </div>
 
 <!-- 5. Confianza: 6.70% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">5. Confianza</span>
 <span class="font-bold text-primary">6.70%</span>
@@ -489,7 +579,7 @@
 </div>
 
 <!-- 6. Expectación: 5.90% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">6. Expectación</span>
 <span class="font-bold text-primary">5.90%</span>
@@ -500,7 +590,7 @@
 </div>
 
 <!-- 7. Optimismo: 5.30% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">7. Optimismo</span>
 <span class="font-bold text-primary">5.30%</span>
@@ -511,7 +601,7 @@
 </div>
 
 <!-- 8. Ambición: 4.50% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">8. Ambición</span>
 <span class="font-bold text-primary">4.50%</span>
@@ -522,7 +612,7 @@
 </div>
 
 <!-- 9. Aceptación: 4.30% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">9. Aceptación</span>
 <span class="font-bold text-primary">4.30%</span>
@@ -533,7 +623,7 @@
 </div>
 
 <!-- 10. Satisfacción: 4.00% -->
-<div class="space-y-1 transition-all duration-300 hover:scale-[1.01] hover:brightness-110 cursor-pointer">
+<div class="space-y-1 transition-[transform,filter] duration-200 ease-out hover:scale-[1.01] hover:brightness-105 cursor-pointer">
 <div class="flex justify-between text-sm md:text-base font-medium">
 <span class="text-on-surface font-semibold">10. Satisfacción</span>
 <span class="font-bold text-primary">4.00%</span>
@@ -568,10 +658,10 @@
     Súmate a nuestra red de colaboración y recibe invitaciones exclusivas para los próximos conversatorios y talleres de capital social.
 </p>
 <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-<a href="contacto#mailing-list" class="bg-white text-primary px-8 py-4 rounded-lg font-bold text-base hover:bg-secondary hover:text-white transition-colors inline-block">
+<a href="contacto#mailing-list" class="bg-white text-primary px-8 py-4 rounded-lg font-bold text-base hover:bg-secondary hover:text-white btn-press transition-[background-color,color] inline-block">
     Unirse a la Base de Datos
 </a>
-<a href="./Report%20Ejecutivo%20C3S%20(2).pdf" target="_blank" rel="noopener noreferrer" download="Report_Ejecutivo_C3S.pdf" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-white hover:text-primary transition-colors inline-block cursor-pointer">
+<a href="./Report%20Ejecutivo%20C3S%20(2).pdf" target="_blank" rel="noopener noreferrer" download="Report_Ejecutivo_C3S.pdf" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-white hover:text-primary btn-press transition-[background-color,color] inline-block cursor-pointer">
     Descargar Reporte Completo
 </a>
 </div>
@@ -605,7 +695,7 @@
 <div class="space-y-6">
 <span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contacto</span>
 <div class="flex gap-4">
-<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="contacto#contacto">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white btn-press transition-[background-color,color,border-color]" href="contacto#contacto">
 <span class="material-symbols-outlined text-[20px]">mail</span>
 </a>
 </div>
@@ -615,4 +705,48 @@
 </div>
 </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileMenu.classList.contains('open-menu');
+        if (isOpen) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        } else {
+          mobileMenu.classList.remove('hidden-menu');
+          mobileMenu.classList.add('open-menu');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          if (menuIcon) menuIcon.textContent = 'close';
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+    }
+  });
+</script>
 </body></html>

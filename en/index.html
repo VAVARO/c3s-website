@@ -129,18 +129,79 @@
             width: 4px;
             background-color: #770000;
         }
+        /* Floating Chrome (Apple Materials & Depth) */
+        .floating-nav {
+            background-color: rgba(252, 249, 248, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(228, 190, 184, 0.6);
+        }
+        /* Tap / Press Feedback (Physical Response) */
+        .btn-press {
+            transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), opacity 140ms ease-out;
+        }
+        .btn-press:active {
+            transform: scale(0.97);
+        }
+        /* Touch safety: isolate hover scaling to real pointers */
+        @media (hover: hover) and (pointer: fine) {
+            .hover-lift {
+                transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms ease-out;
+            }
+            .hover-lift:hover {
+                transform: scale(1.03);
+            }
+        }
+        /* Smooth Entry Animation */
+        .fade-scale-in {
+            animation: enterScale 260ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        @keyframes enterScale {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* Mobile Menu Drawer */
+        #mobile-menu {
+            transition: max-height 260ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease-out;
+        }
+        #mobile-menu.hidden-menu {
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        #mobile-menu.open-menu {
+            max-height: 360px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* Universal Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- TopNavBar -->
-<nav class="bg-background border-b border-outline-variant sticky top-0 z-50">
+<nav class="floating-nav sticky top-0 z-50 transition-colors">
   <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
     <!-- Brand Logo -->
-    <a href="./" class="font-headline-md text-headline-md font-bold text-primary">C3S</a>
+    <a href="./" class="font-headline-md text-headline-md font-bold text-primary btn-press">C3S</a>
 
     <!-- Active Navigation Links -->
     <div class="hidden md:flex gap-8 items-center h-full">
-      <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="proximo-evento">Upcoming Event</a>
+      <a class="font-body-md text-label-md text-primary border-b-2 border-primary pb-1 font-semibold" href="proximo-evento">Upcoming Event</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="quienes-somos">About Us</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="encuentros">Encounters</a>
       <a class="font-body-md text-label-md text-secondary hover:text-primary transition-colors" href="contacto">Contact</a>
@@ -165,10 +226,18 @@
         <span class="text-outline">|</span>
         <span class="text-primary font-bold">EN</span>
       </div>
-      <button class="text-primary">
-        <span class="material-symbols-outlined">menu</span>
+      <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" class="text-primary p-1.5 rounded-lg active:scale-95 transition-transform flex items-center justify-center">
+        <span id="mobile-menu-icon" class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="hidden-menu md:hidden border-t border-outline-variant/60 bg-[#fcf9f8]/95 backdrop-blur-md px-6 py-4 space-y-3">
+    <a class="block font-body-md text-base font-semibold text-primary py-2 px-3 rounded-lg bg-primary-fixed/40" href="proximo-evento">Upcoming Event</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="quienes-somos">About Us</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="encuentros">Encounters</a>
+    <a class="block font-body-md text-base text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors" href="contacto">Contact</a>
   </div>
 </nav>
 
@@ -282,40 +351,68 @@
         <iframe name="hidden_iframe_evento" id="hidden_iframe_evento" style="display:none;" onload="if(submittedEvento) { showEventoSuccess(); }"></iframe>
         <script>
           function showEventoSuccess() {
-            alert('Registration confirmed! We look forward to seeing you at Auditorio NIDO Lucía.');
-            document.getElementById('evento-form').reset();
+            const form = document.getElementById('evento-form');
+            const successCard = document.getElementById('evento-success');
+            if (form && successCard) {
+              form.classList.add('hidden');
+              successCard.classList.remove('hidden');
+            }
+          }
+          function resetEventoForm() {
+            const form = document.getElementById('evento-form');
+            const successCard = document.getElementById('evento-success');
+            if (form && successCard) {
+              form.reset();
+              submittedEvento = false;
+              form.classList.remove('hidden');
+              successCard.classList.add('hidden');
+            }
           }
         </script>
+
+        <!-- Inline Success Card -->
+        <div id="evento-success" class="hidden fade-scale-in p-8 rounded-xl bg-white border border-outline-variant text-center space-y-4 my-4 shadow-sm">
+          <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
+            <span class="material-symbols-outlined text-3xl">check_circle</span>
+          </div>
+          <h3 class="font-headline-lg text-2xl text-primary font-bold">Registration Confirmed!</h3>
+          <p class="font-body-md text-on-surface-variant max-w-md mx-auto leading-relaxed">
+            We look forward to seeing you on <strong>August 26 at 18:30 hrs</strong> at <strong>Auditorio NIDO Lucía</strong>. Your spot has been reserved for this 7th Encounter.
+          </p>
+          <button type="button" onclick="resetEventoForm()" class="mt-4 px-6 py-2.5 rounded-lg border border-outline-variant text-primary font-semibold hover:bg-surface-container-low btn-press transition-colors text-sm cursor-pointer">
+            Register another attendee
+          </button>
+        </div>
 
         <form id="evento-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfVF16roYVJJAeWk3171e7s1BFISfbe5zrTJSWJSV_LpoLGjw/formResponse" method="POST" target="hidden_iframe_evento" onsubmit="submittedEvento=true;" class="space-y-4">
           
           <div>
             <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="nombre-evento">Full Name</label>
-            <input id="nombre-evento" name="entry.112852596" required type="text" placeholder="Your full name" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <input id="nombre-evento" name="entry.112852596" required type="text" placeholder="Your full name" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 ease-out outline-none"/>
           </div>
 
           <div>
             <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="email-evento">Email Address</label>
-            <input id="email-evento" name="entry.2104777613" required type="email" placeholder="you@email.com" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <input id="email-evento" name="entry.2104777613" required type="email" placeholder="you@email.com" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 ease-out outline-none"/>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="pais-evento">Country of Origin</label>
-              <input id="pais-evento" name="entry.221556986" required type="text" placeholder="e.g. Chile" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+              <input id="pais-evento" name="entry.221556986" required type="text" placeholder="e.g. Chile" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 ease-out outline-none"/>
             </div>
             <div>
               <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="ciudad-evento">City or Location</label>
-              <input id="ciudad-evento" name="entry.1395423488" required type="text" placeholder="e.g. Santiago, Coyhaique, etc." class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+              <input id="ciudad-evento" name="entry.1395423488" required type="text" placeholder="e.g. Santiago, Coyhaique, etc." class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 ease-out outline-none"/>
             </div>
           </div>
 
           <div>
             <label class="block font-label-md text-xs font-semibold text-on-surface mb-1" for="org-evento">Organization / Institution <span class="text-on-surface-variant font-normal">(Optional)</span></label>
-            <input id="org-evento" name="entry.91443577" type="text" placeholder="Your organization or university" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"/>
+            <input id="org-evento" name="entry.91443577" type="text" placeholder="Your organization or university" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition-[border-color,box-shadow] duration-150 ease-out outline-none"/>
           </div>
 
-          <button type="submit" class="w-full bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer mt-2">
+          <button type="submit" class="w-full bg-primary text-on-primary font-bold px-8 py-3 rounded-lg hover:opacity-90 btn-press transition-opacity cursor-pointer mt-2">
             Confirm My Registration
           </button>
         </form>
@@ -429,10 +526,10 @@
     Join the conversation and receive exclusive invitations to our upcoming encounters and social capital workshops.
 </p>
 <div class="flex flex-col sm:flex-row justify-center gap-4">
-<a href="contacto#mailing-list" class="bg-on-secondary text-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-secondary-fixed transition-colors inline-block">
+<a href="contacto#mailing-list" class="bg-on-secondary text-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-secondary-fixed btn-press transition-[background-color,color] inline-block">
     Subscribe to Mailing List
 </a>
-<a href="contacto#contacto" class="border-2 border-on-secondary text-on-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-on-secondary hover:text-secondary transition-all inline-block">
+<a href="contacto#contacto" class="border-2 border-on-secondary text-on-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-on-secondary hover:text-secondary btn-press transition-[background-color,color] inline-block">
     Contact Us
 </a>
 </div>
@@ -470,7 +567,7 @@
 <div class="space-y-6">
 <span class="font-label-md text-primary font-bold uppercase tracking-widest block">Contact</span>
 <div class="flex gap-4">
-<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="contacto#contacto">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-secondary hover:bg-secondary hover:text-white btn-press transition-[background-color,color,border-color]" href="contacto#contacto">
 <span class="material-symbols-outlined text-[20px]">mail</span>
 </a>
 </div>
@@ -482,24 +579,46 @@
 </footer>
 
 <script>
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.classList.add('shadow-sm');
-        } else {
-            header.classList.remove('shadow-sm');
-        }
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    const statCards = document.querySelectorAll('.group');
-    statCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-4px)';
-            card.style.transition = 'all 0.3s ease';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-        });
-    });
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileMenu.classList.contains('open-menu');
+        if (isOpen) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        } else {
+          mobileMenu.classList.remove('hidden-menu');
+          mobileMenu.classList.add('open-menu');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          if (menuIcon) menuIcon.textContent = 'close';
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open-menu')) {
+          mobileMenu.classList.remove('open-menu');
+          mobileMenu.classList.add('hidden-menu');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          if (menuIcon) menuIcon.textContent = 'menu';
+        }
+      });
+    }
+  });
 </script>
 </body></html>
