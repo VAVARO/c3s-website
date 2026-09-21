@@ -271,14 +271,17 @@ function enviarCampanaRecordatorios() {
  * Envío individual de recordatorio a personas inscritas
  */
 function enviarCorreoRecordatorioInscritos(nombre, email, tratamiento) {
-  var subject = "¡Nos vemos este 23 de septiembre! · Información práctica y cómo llegar al 7mo Encuentro C3S";
+  var subject = "¡Nos vemos este miércoles 23 de septiembre! · Información práctica y cómo llegar al 7mo Encuentro C3S";
   var senderName = "Círculo Chileno de Capital Social (C3S)";
   tratamiento = tratamiento || "Estimado/a";
 
   // Texto plano de respaldo
   var plainText = tratamiento + " " + nombre + ",\n\n" +
     "Te escribimos para recordarte que este miércoles 23 de septiembre nos encontraremos en el 7.º Encuentro del Círculo Chileno de Capital Social en Auditorio NIDO Lucía. ¡Nos alegra mucho contar con tu presencia!\n\n" +
-    "Los esperaremos a partir de las 18:00 horas con un café de bienvenida para comenzar a conectar con calma, dando inicio puntual a la actividad a las 18:30 horas. Al finalizar la jornada, compartiremos una conversación distendida y un cóctel.\n\n" +
+    "Te esperaremos a partir de las 18:00 horas:\n" +
+    "• 18:00 hrs: Café de bienvenida para comenzar a conectar con calma.\n" +
+    "• 18:30 hrs: Inicio puntual del Encuentro.\n" +
+    "• Al cierre: Cóctel y espacio de conversación distendida.\n\n" +
     "Para facilitar tu llegada, te dejamos a continuación las alternativas de acceso y estacionamiento:\n\n" +
     "¿CÓMO LLEGAR A AUDITORIO NIDO LUCÍA?\n" +
     "Dirección: San Isidro 85, Santiago Centro\n\n" +
